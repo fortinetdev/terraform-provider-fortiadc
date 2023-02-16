@@ -1,0 +1,242 @@
+// Copyright 2022 Fortinet, Inc. All rights reserved.
+// Author: Shih-Hsin Huang
+// Description: Configure  router isp.
+
+package fortiadc
+
+import (
+	"fmt"
+	"log"
+	"strconv"
+
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+)
+
+func resourceRouterIsp() *schema.Resource {
+	return &schema.Resource{
+		Read:   resourceRouterIspRead,
+		Update: resourceRouterIspUpdate,
+		Create: resourceRouterIspCreate,
+		Delete: resourceRouterIspDelete,
+
+		Importer: &schema.ResourceImporter{
+			State: schema.ImportStatePassthrough,
+		},
+
+		Schema: map[string]*schema.Schema{
+			"destination": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"mkey": &schema.Schema{
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"gateway": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"vdom": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+			},
+		},
+	}
+}
+func resourceRouterIspCreate(d *schema.ResourceData, m interface{}) error {
+	c := m.(*FortiClient).Client
+	c.Retries = 1
+
+	vdom := ""
+
+	if v, ok := d.GetOk("vdom"); ok {
+		if s, ok := v.(string); ok {
+			vdom = s
+		}
+	}
+
+	mkey := ""
+
+	t := d.Get("mkey")
+	if v, ok := t.(string); ok {
+		mkey = v
+	} else if v, ok := t.(int); ok {
+		mkey = strconv.Itoa(v)
+	} else {
+		return fmt.Errorf("Error describing RouterIsp: type error")
+	}
+
+	obj, err := getObjectRouterIsp(d, c.Fv)
+	if err != nil {
+		return fmt.Errorf("Error creating RouterIsp resource while getting object: %v", err)
+	}
+
+	_, err = c.CreateRouterIsp(obj, vdom)
+	if err != nil {
+		return fmt.Errorf("Error creating RouterIsp resource: %v", err)
+	}
+
+	d.SetId(mkey)
+
+	return resourceRouterIspRead(d, m)
+}
+func resourceRouterIspUpdate(d *schema.ResourceData, m interface{}) error {
+	mkey := d.Id()
+	c := m.(*FortiClient).Client
+	c.Retries = 1
+
+	vdom := ""
+
+	if v, ok := d.GetOk("vdom"); ok {
+		if s, ok := v.(string); ok {
+			vdom = s
+		}
+	}
+
+	obj, err := getObjectRouterIsp(d, c.Fv)
+	if err != nil {
+		return fmt.Errorf("Error updating RouterIsp resource while getting object: %v", err)
+	}
+
+	_, err = c.UpdateRouterIsp(obj, mkey, vdom)
+	if err != nil {
+		return fmt.Errorf("Error updating RouterIsp resource: %v", err)
+	}
+
+	return resourceRouterIspRead(d, m)
+}
+func resourceRouterIspDelete(d *schema.ResourceData, m interface{}) error {
+	mkey := d.Id()
+
+	c := m.(*FortiClient).Client
+	c.Retries = 1
+
+	vdom := ""
+	if v, ok := d.GetOk("vdom"); ok {
+		if s, ok := v.(string); ok {
+			vdom = s
+		}
+	}
+
+	err := c.DeleteRouterIsp(mkey, vdom)
+	if err != nil {
+		return fmt.Errorf("Error deleting RouterIsp resource: %v", err)
+	}
+
+	d.SetId("")
+
+	return nil
+}
+func resourceRouterIspRead(d *schema.ResourceData, m interface{}) error {
+	mkey := d.Id()
+
+	c := m.(*FortiClient).Client
+	c.Retries = 1
+
+	vdom := ""
+
+	if v, ok := d.GetOk("vdom"); ok {
+		if s, ok := v.(string); ok {
+			vdom = s
+		}
+	}
+
+	o, err := c.ReadRouterIsp(mkey, vdom)
+	if err != nil {
+		return fmt.Errorf("Error reading RouterIsp resource: %v", err)
+	}
+
+	if o == nil {
+		log.Printf("[WARN] resource (%s) not found, removing from state", d.Id())
+		d.SetId("")
+		return nil
+	}
+
+	err = refreshObjectRouterIsp(d, o, c.Fv)
+	if err != nil {
+		return fmt.Errorf("Error reading RouterIsp resource from API: %v", err)
+	}
+	return nil
+}
+func flattenRouterIspDestination(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+	return v
+}
+
+func flattenRouterIspMkey(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+	return v
+}
+
+func flattenRouterIspGateway(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+	return v
+}
+
+func refreshObjectRouterIsp(d *schema.ResourceData, o map[string]interface{}, sv string) error {
+	var err error
+
+	if err = d.Set("destination", flattenRouterIspDestination(o["destination"], d, "destination", sv)); err != nil {
+		if !fortiAPIPatch(o["destination"]) {
+			return fmt.Errorf("Error reading destination: %v", err)
+		}
+	}
+
+	if err = d.Set("mkey", flattenRouterIspMkey(o["mkey"], d, "mkey", sv)); err != nil {
+		if !fortiAPIPatch(o["mkey"]) {
+			return fmt.Errorf("Error reading mkey: %v", err)
+		}
+	}
+
+	if err = d.Set("gateway", flattenRouterIspGateway(o["gateway"], d, "gateway", sv)); err != nil {
+		if !fortiAPIPatch(o["gateway"]) {
+			return fmt.Errorf("Error reading gateway: %v", err)
+		}
+	}
+
+	return nil
+}
+
+func expandRouterIspDestination(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+	return v, nil
+}
+
+func expandRouterIspMkey(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+	return v, nil
+}
+
+func expandRouterIspGateway(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+	return v, nil
+}
+
+func getObjectRouterIsp(d *schema.ResourceData, sv string) (*map[string]interface{}, error) {
+	obj := make(map[string]interface{})
+
+	if v, ok := d.GetOk("destination"); ok {
+		t, err := expandRouterIspDestination(d, v, "destination", sv)
+		if err != nil {
+			return &obj, err
+		} else if t != nil {
+			obj["destination"] = t
+		}
+	}
+
+	if v, ok := d.GetOk("mkey"); ok {
+		t, err := expandRouterIspMkey(d, v, "mkey", sv)
+		if err != nil {
+			return &obj, err
+		} else if t != nil {
+			obj["mkey"] = t
+		}
+	}
+
+	if v, ok := d.GetOk("gateway"); ok {
+		t, err := expandRouterIspGateway(d, v, "gateway", sv)
+		if err != nil {
+			return &obj, err
+		} else if t != nil {
+			obj["gateway"] = t
+		}
+	}
+
+	return &obj, nil
+}

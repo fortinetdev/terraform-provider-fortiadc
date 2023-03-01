@@ -1,0 +1,5 @@
+06542c2010ca536d8f336f3d0f9a35cd5f45b2f32ea82817d36f70bf23ad023c  terraform-provider-fortiadc_1.0.0_linux_arm64.tar.gz
+c4c62e89e0d7b38dd5cc090a306cc691d2f030e1bd7f9ae9cd6422abadcd3bd5  terraform-provider-fortiadc_1.0.0_linux_amd64.tar.gz
+c82cd9fd3746307a82f02f587ad205f95f795ca069666e5d0c324dfec3b433b0  terraform-provider-fortiadc_1.0.0_darwin_arm64.tar.gz
+fca569a7d4cee96848a0432af555b3176bc0c6d53366ae532df032bf9e3665a5  terraform-provider-fortiadc_1.0.0_linux_386.tar.gz
+fe5c2bbe1a088c3610fe9a1a98109ac239bd0b20f48e77afe81a89047fccb59c  terraform-provider-fortiadc_1.0.0_darwin_amd64.tar.gz

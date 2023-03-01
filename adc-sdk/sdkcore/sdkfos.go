@@ -250,7 +250,7 @@ func (c *FortiSDKClient) UpdateVdom(params *map[string]interface{}, mkey string,
 
 func (c *FortiSDKClient) ReadVdom(mkey string, vdom string) (mapTmp map[string]interface{}, err error) {
 	HTTPMethod := "GET"
-	path := "/api/vdom"
+	path := "/api/system_vdom"
 	path += "?mkey=" + escapeURLString(mkey)
 
 	mapTmp, err = read(c, HTTPMethod, path, false, vdom)

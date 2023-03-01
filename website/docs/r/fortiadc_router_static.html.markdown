@@ -11,7 +11,12 @@ Configure fortiadc route configuration.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_static" "router_test" {
+	mkey = "2"
+	dest = "110.2.2.122/32"
+	gw = "2.2.2.2"
+}
+
 ```
 
 ## Argument Reference

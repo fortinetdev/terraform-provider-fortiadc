@@ -13,7 +13,7 @@ Use this data source to get information on an fortiadc load balance decompressio
 
 ```hcl
  data "fortiadc_load_balance_decompression_child_content_types" sample1 {
-  custom_content_type = "1"
+  mkey = "1"
 }
 
 output output1 {
@@ -22,7 +22,7 @@ output output1 {
 ```
 
 ## Argument Reference
-* `custom_content_type` - (Required) Specify the mkey of the desired  load balance decompression child content types.
+* `mkey` - (Required) Specify the mkey of the desired  load balance decompression child content types.
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 
 
@@ -31,7 +31,7 @@ output output1 {
 The following attributes are exported:
 
 * `pkey` - The parent key.
-* `custom_content_type` - custom content type.
-* `mkey` - content type id. 
+* `mkey` - content type id.
 * `content_type` - content type string. 
+* `custom_content_type` - custom content type. 
 

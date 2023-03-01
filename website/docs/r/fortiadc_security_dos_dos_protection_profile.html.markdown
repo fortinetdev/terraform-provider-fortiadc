@@ -11,7 +11,10 @@ Configure fortiadc DoS protect profile.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_security_dos_dos_protection_profile" "ddos" {
+	mkey = "custom_dos"
+}
+
 ```
 
 ## Argument Reference

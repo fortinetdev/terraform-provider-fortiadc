@@ -11,7 +11,12 @@ Configure fortiadc system IPv6 address.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_address6" "address1_ipv6" {
+	mkey = "addr_1"
+	type = "ip6-network"
+	ip6_network = "2001:0db8:85a3::8a2e:0370:7334/64"
+}
+
 ```
 
 ## Argument Reference

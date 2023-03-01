@@ -11,7 +11,13 @@ Configure fortiadc load-balance caching info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_caching_child_dyn_cache_list" "caching_dyn" {
+	mkey = "1"
+	pkey = "lb_caching_1"
+	uri = "https://cachingdyn.com"
+	depends_on = [fortiadc_load_balance_caching.lb_caching]
+}
+
 ```
 
 ## Argument Reference

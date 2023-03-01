@@ -11,7 +11,11 @@ Configure fortiadc certificate revokation list.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_certificate_crl" "crl_ldap" {
+	mkey = "crl_ldap_root"
+	ldap_server = "ldap1"
+}
+
 ```
 
 ## Argument Reference

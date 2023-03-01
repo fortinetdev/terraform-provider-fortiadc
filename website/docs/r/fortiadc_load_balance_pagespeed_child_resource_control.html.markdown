@@ -11,7 +11,15 @@ Configure fortiadc load-balance pagespeed.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_pagespeed_child_resource_control" "resource_control" {
+	mkey = "1"
+	pkey = "pagespeed_1"
+	origin_domain_pattern = "https://www.example.com"
+	fetch_domain = "https://www.exmaple.com"
+	rewrite_domain = "https://www.example.com"
+	depends_on = [fortiadc_load_balance_pagespeed.pagespeed]
+}
+
 ```
 
 ## Argument Reference

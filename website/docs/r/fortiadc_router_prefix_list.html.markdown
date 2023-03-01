@@ -11,7 +11,10 @@ Configure fortiadc Configure ipv4 prefix list..
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_prefix_list" "prefix_list" {
+	mkey = "prefix_list_1"
+}
+
 ```
 
 ## Argument Reference

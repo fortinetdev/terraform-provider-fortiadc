@@ -19,8 +19,8 @@ TODO
 The following arguments are supported:
 
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
-* `fadc_id` - Web Sub Category Id.
-* `mkey` - Web Sub Category Name. 
+* `mkey` - Web Sub Category Name.
+* `fadc_id` - Web Sub Category Id. (0,255)
 * `description` - Web Category Description. 
 
 ## Attribute Reference

@@ -11,7 +11,11 @@ Configure fortiadc address group info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_addrgrp" "addressgrp1" {
+	mkey = "addrgrp_1"
+	member_list = "addr_1"
+}
+
 ```
 
 ## Argument Reference

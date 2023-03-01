@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"log"
 	"mime/multipart"
+	"path/filepath"
 	"strconv"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -281,6 +282,8 @@ func getObjectUploadErrorPage(d *schema.ResourceData, sv string) (*map[string]in
 				writer.Close()
 				return &obj, err
 			}
+			filename := filepath.Base(t.(string))
+			set_multipart_parameter(writer, "local_pc", filename, false)
 		}
 	}
 

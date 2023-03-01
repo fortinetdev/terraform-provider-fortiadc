@@ -21,7 +21,7 @@ output output1 {
 ```
 
 ## Argument Reference
-* `https-server-cert` - (Required) Specify the mkey of the desired  system global.
+* `` - (Required) Specify the mkey of the desired  system global.
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 
 
@@ -32,6 +32,7 @@ The following attributes are exported:
 * `vdom_admin` - enable/disable . 
 * `telnet_port` - the port number of the telnet service. (1,65535)
 * `pre_login_banner` - enable/disable pre-login-banner. 
+* `https_server_cert` - appliance's local default certificate. 
 * `hostname` - appliance's host name. 
 * `config_sync_enable` - config sync enable. 
 

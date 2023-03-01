@@ -11,7 +11,12 @@ Configure fortiadc load-balance HTTP/2 profile.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_http2_profile" "http2_profile" {
+	mkey = "http2_profile_test"
+	ssl_constraint = "enable"
+	max_concurrent_stream = "7"
+}
+
 ```
 
 ## Argument Reference

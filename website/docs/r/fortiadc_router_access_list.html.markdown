@@ -11,7 +11,10 @@ Configure fortiadc Configure ipv4 access list..
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_access_list" "access_list" {
+	mkey = "access_list1"
+}
+
 ```
 
 ## Argument Reference

@@ -11,7 +11,15 @@ Configure fortiadc load-balance content routing info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_content_routing_child_match_condition" "crouting_match" {
+	pkey = "cr1"
+	mkey = "1"
+	content = "match_string"
+	type = "string"
+	ignorecase = "enable"
+	depends_on = [fortiadc_load_balance_content_routing.c_routing1]
+}
+
 ```
 
 ## Argument Reference

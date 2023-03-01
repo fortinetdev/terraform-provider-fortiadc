@@ -26,12 +26,12 @@ func resourceLoadBalanceWebSubCategory() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"fadc_id": &schema.Schema{
 				Type:     schema.TypeString,
-				Required: true,
+				Computed: true,
+				Optional: true,
 			},
 			"mkey": &schema.Schema{
 				Type:     schema.TypeString,
-				Computed: true,
-				Optional: true,
+				Required: true,
 			},
 			"description": &schema.Schema{
 				Type:     schema.TypeString,
@@ -59,7 +59,7 @@ func resourceLoadBalanceWebSubCategoryCreate(d *schema.ResourceData, m interface
 
 	mkey := ""
 
-	t := d.Get("id")
+	t := d.Get("mkey")
 	if v, ok := t.(string); ok {
 		mkey = v
 	} else if v, ok := t.(int); ok {

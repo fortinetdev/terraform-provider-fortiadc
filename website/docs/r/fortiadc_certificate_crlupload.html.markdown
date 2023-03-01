@@ -11,7 +11,12 @@ Upload fortiadc certificate crl.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_certificate_intmed_caupload" "intmed_caupload" {
+	mkey =  "intemedca_global"
+	cert = "/root/terr_test/host.cert"
+	vdom = "global"
+}
+
 ```
 
 ## Argument Reference

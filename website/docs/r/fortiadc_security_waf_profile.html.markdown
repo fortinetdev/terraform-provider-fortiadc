@@ -11,7 +11,12 @@ Configure fortiadc web application firewall profile info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_security_waf_profile" "waf" {
+	mkey = "custom_waf"
+	web_attack_signature = "Alert-Only"
+	http_protocol_constraint = "Alert-Only"
+}
+
 ```
 
 ## Argument Reference

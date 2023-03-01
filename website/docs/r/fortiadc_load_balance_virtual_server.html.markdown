@@ -11,7 +11,19 @@ Configure fortiadc load-balance virtual-server info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_virtual_server" "vs1_l7" {
+	mkey = "vs1"
+	pool = "rsp1"
+	interface = "port2"
+	port = "80"
+	address = "192.1.2.1"
+	type = "l7-load-balance"
+	profile = "LB_PROF_HTTP"
+	method = "LB_METHOD_ROUND_ROBIN"
+	source_pool_list = "ippool1"
+	depends_on = [fortiadc_load_balance_ippool.ippool1, fortiadc_load_balance_pool.rsp1]
+}
+
 ```
 
 ## Argument Reference

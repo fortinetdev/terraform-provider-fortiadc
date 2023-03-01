@@ -11,7 +11,12 @@ Configure fortiadc Configure BGP..
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_bgp" "bgp" {
+	as = "1"
+	router_id = "10.106.203.254"
+	redistribute_static = "enable"
+}
+
 ```
 
 ## Argument Reference
@@ -20,6 +25,7 @@ The following arguments are supported:
 
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 * `redistribute_ospf` - Enable/Disable redistribute ospf. Valid values: enable/disable.
+* `router_id` - Router ID.. 
 * `redistribute_connected` - Enable/Disable redistribute connected. Valid values: enable/disable.
 
 * `deterministic_med` - Enable/disable enforce deterministic comparison of MED.. Valid values: enable/disable.

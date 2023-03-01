@@ -11,7 +11,12 @@ Configure fortiadc security antivirus profile info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_security_antivirus_profile" "av" {
+	mkey = "custom_av"
+	uncomp_nest_limit = "5"
+	scan_bzip2 = "enable"
+}
+
 ```
 
 ## Argument Reference

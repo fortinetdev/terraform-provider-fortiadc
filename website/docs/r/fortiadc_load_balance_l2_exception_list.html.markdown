@@ -11,7 +11,13 @@ Configure fortiadc load-balance layer2 exception list.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_l2_exception_list" "lb_l2_exception" {
+	mkey = "l2_exception"
+	description = "test_l2_exception"
+	web_filter_profile = "web_filter_1"
+	depends_on = [fortiadc_load_balance_web_filter_profile.web_filt]
+}
+
 ```
 
 ## Argument Reference

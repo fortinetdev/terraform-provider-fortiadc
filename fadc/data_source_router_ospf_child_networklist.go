@@ -68,8 +68,8 @@ func dataSourceRouterOspfChildNetworkListRead(d *schema.ResourceData, m interfac
 			if !run_filter(filters, i) {
 				continue
 			}
-			if _, ok := i["prefix"]; ok {
-				tmps = append(tmps, i["prefix"].(string))
+			if _, ok := i["mkey"]; ok {
+				tmps = append(tmps, i["mkey"].(string))
 			}
 		}
 	}

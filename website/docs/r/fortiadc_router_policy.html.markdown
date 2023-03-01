@@ -11,7 +11,13 @@ Configure fortiadc route policy.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_policy" "router_policy" {
+	mkey = "1"
+	source = "10.0.0.0/24"
+	destination = "0.0.0.0/0"
+	gateway = "10.0.0.254"
+}
+
 ```
 
 ## Argument Reference

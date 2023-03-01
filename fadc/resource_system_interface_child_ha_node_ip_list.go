@@ -69,7 +69,7 @@ func resourceSystemInterfaceChildHaNodeIpListCreate(d *schema.ResourceData, m in
 
 	mkey := ""
 
-	t := d.Get("id")
+	t := d.Get("fadc_id")
 	if v, ok := t.(string); ok {
 		mkey = v
 	} else if v, ok := t.(int); ok {

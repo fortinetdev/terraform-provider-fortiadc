@@ -11,7 +11,10 @@ Configure fortiadc vdom configuration.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_vdom" "vdom_set" {
+	mkey = "vdom2"
+}
+
 ```
 
 ## Argument Reference

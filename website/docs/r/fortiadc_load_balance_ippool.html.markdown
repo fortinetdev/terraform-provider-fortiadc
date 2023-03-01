@@ -11,7 +11,14 @@ Configure fortiadc load-balance ip pool info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_ippool" "ippool1" {
+	mkey = "ippool1"
+	pool_type = "ipv4"
+	interface = "port2"
+	ip_start = "192.168.2.101"
+	ip_end = "192.168.2.104"
+}
+
 ```
 
 ## Argument Reference

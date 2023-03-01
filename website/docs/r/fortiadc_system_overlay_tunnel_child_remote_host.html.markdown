@@ -11,7 +11,13 @@ Configure fortiadc overlay tunnel.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_overlay_tunnel_child_remote_host" "overlay_remote" {
+	pkey = "overlay_tunnel1"
+	mkey = "1"
+	host_mac = "aa:bb:cc:ee:ff:11"
+	vtep = "192.0.2.105"
+}
+
 ```
 
 ## Argument Reference

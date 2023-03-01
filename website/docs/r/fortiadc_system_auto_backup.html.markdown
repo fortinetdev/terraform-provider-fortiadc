@@ -11,7 +11,14 @@ Configure fortiadc Auto configuration backup.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_auto_backup" "autobackup" {
+	storage = "disk"
+	scheduled_backup_status = "enable"
+	scheduled_backup_day = "Thursday"
+	scheduled_backup_frequency = "every week"
+	scheduled_backup_time = "23:15"
+}
+
 ```
 
 ## Argument Reference
@@ -24,6 +31,7 @@ The following arguments are supported:
 * `config_password` - password for config. 
 * `scheduled_backup_status` - enable/disable auto backup. Valid values: enable/disable.
 * `scheduled_backup_frequency` - scheduled backup frequency. Valid values: 1:every day, 0:time interval, 2:every week .
+* `storage` - save configuration to ADC disk or local server. Valid values: 1:sftp, 0:disk .
 * `scheduled_backup_time` - hour and minute, hh: 0-23, mm: {00|15|30|45}. 
 * `address` - local server ip address. 
 * `scheduled_backup_day` - day of the week: Sunday to Saturday. Valid values: 1:Monday, 0:Sunday, 3:Wednesday, 2:Tuesday, 5:Friday, 4:Thursday, 6:Saturday .

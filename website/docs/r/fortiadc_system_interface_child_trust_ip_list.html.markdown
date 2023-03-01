@@ -11,7 +11,15 @@ Configure fortiadc interface configuration.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_interface_child_trust_ip_list" "vlan_trust_ip" {
+	vdom = "root"
+	pkey = "vlan99"
+	name = "all"
+	type = "ip-netmask"
+	ip_netmask = "0.0.0.0/0"
+	depends_on = [fortiadc_system_interface.vlan99]
+}
+
 ```
 
 ## Argument Reference

@@ -21,7 +21,7 @@ output output1 {
 ```
 
 ## Argument Reference
-* `router-id` - (Required) Specify the mkey of the desired  router bgp.
+* `` - (Required) Specify the mkey of the desired  router bgp.
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 
 
@@ -30,6 +30,7 @@ output output1 {
 The following attributes are exported:
 
 * `redistribute_ospf` - Enable/Disable redistribute ospf. 
+* `router_id` - Router ID.. 
 * `redistribute_connected` - Enable/Disable redistribute connected. 
 
 * `deterministic_med` - Enable/disable enforce deterministic comparison of MED.. 

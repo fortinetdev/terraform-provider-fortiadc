@@ -11,7 +11,10 @@ Configure fortiadc schedule group info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_schedule_group" "sg1" {
+	mkey = "schedule_group_test1"
+}
+
 ```
 
 ## Argument Reference

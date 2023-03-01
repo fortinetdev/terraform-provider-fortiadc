@@ -11,7 +11,11 @@ Configure fortiadc the script of health-check.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_health_check_script" "hc_script1" {
+	mkey = "icmp_script1"
+	script = "if ping -c 1 $NODE_IP > /dev/null; then\n    exit $UP\nelse\n    exit $DOWN\nfi"
+}
+
 ```
 
 ## Argument Reference
@@ -20,7 +24,7 @@ The following arguments are supported:
 
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 * `mkey` - scripting name.
-* `file` - scripting file name. 
+* `script` - scripting content. 
 
 ## Attribute Reference
 

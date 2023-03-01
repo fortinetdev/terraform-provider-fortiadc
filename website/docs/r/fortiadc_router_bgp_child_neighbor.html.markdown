@@ -11,7 +11,18 @@ Configure fortiadc Configure BGP..
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_bgp_child_neighbor" "bgp_neighbor" {
+	mkey = "1"
+	remote_as = "1"
+	type = "ipv4"
+	ip = "10.10.10.101"
+	interface = "port5"
+	vdom = "root"
+	distribute_list_in = "access_list1"
+	distribute_list_out = "access_list1"
+	depends_on = [fortiadc_router_access_list.access_list]
+}
+
 ```
 
 ## Argument Reference

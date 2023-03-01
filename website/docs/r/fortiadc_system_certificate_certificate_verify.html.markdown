@@ -11,7 +11,10 @@ Configure fortiadc Certificate Verify.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_certificate_certificate_verify" "cert_verify" {
+	mkey = "cv1"
+}
+
 ```
 
 ## Argument Reference

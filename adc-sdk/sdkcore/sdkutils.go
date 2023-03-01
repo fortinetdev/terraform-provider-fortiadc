@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"strconv"
+	"strings"
 )
 
 func createUpload(c *FortiSDKClient, method string, path string, params *map[string]interface{}, output map[string]interface{}, vdomparam string) (err error) {
@@ -140,6 +141,9 @@ func delete(c *FortiSDKClient, method string, path string, vdomparam string) (er
 
 func read(c *FortiSDKClient, method string, path string, bcomplex bool, vdomparam string) (mapTmp map[string]interface{}, err error) {
 	req := c.NewRequest(method, path, nil, nil)
+	if vdomparam == "global" {
+		vdomparam = ""
+	}
 	err = req.Send3(vdomparam)
 	if err != nil || req.HTTPResponse == nil {
 		err = fmt.Errorf("cannot send request %v", err)
@@ -169,6 +173,12 @@ func read(c *FortiSDKClient, method string, path string, bcomplex bool, vdompara
 		switch result["payload"].(type) {
 		case map[string]interface{}:
 			mapTmp = result["payload"].(map[string]interface{})
+			for k, v := range mapTmp {
+				switch v.(type) {
+				case string:
+					mapTmp[k] = strings.TrimSuffix(v.(string), " ")
+				}
+			}
 		default:
 			mapTmp = (result["payload"].([]interface{}))[0].(map[string]interface{})
 		}

@@ -21,7 +21,7 @@ output output1 {
 ```
 
 ## Argument Reference
-* `storage` - (Required) Specify the mkey of the desired  system auto backup.
+* `` - (Required) Specify the mkey of the desired  system auto backup.
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 
 
@@ -34,6 +34,7 @@ The following attributes are exported:
 * `config_password` - password for config. 
 * `scheduled_backup_status` - enable/disable auto backup. 
 * `scheduled_backup_frequency` - scheduled backup frequency. 
+* `storage` - save configuration to ADC disk or local server. 
 * `scheduled_backup_time` - hour and minute, hh: 0-23, mm: {00|15|30|45}. 
 * `address` - local server ip address. 
 * `scheduled_backup_day` - day of the week: Sunday to Saturday. 

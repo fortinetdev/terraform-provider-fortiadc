@@ -1376,7 +1376,7 @@ func (c *FortiSDKClient) DeleteSystemMailserver(mkey string, vdom string) (err e
 
 func (c *FortiSDKClient) UpdateSystemMailserver(params *map[string]interface{}, mkey string, vdom string) (output map[string]interface{}, err error) {
 	HTTPMethod := "PUT"
-	path := "/api/system_mailserver"
+	path := "/api/system_mailserver?mkey=-1"
 	output = make(map[string]interface{})
 
 	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
@@ -1550,7 +1550,7 @@ func (c *FortiSDKClient) DeleteSystemAutoBackup(mkey string, vdom string) (err e
 
 func (c *FortiSDKClient) UpdateSystemAutoBackup(params *map[string]interface{}, mkey string, vdom string) (output map[string]interface{}, err error) {
 	HTTPMethod := "PUT"
-	path := "/api/system_auto_backup"
+	path := "/api/system_auto_backup?mkey=-1"
 	output = make(map[string]interface{})
 
 	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
@@ -2303,7 +2303,7 @@ func (c *FortiSDKClient) DeleteRouterOspf(mkey string, vdom string) (err error) 
 
 func (c *FortiSDKClient) UpdateRouterOspf(params *map[string]interface{}, mkey string, vdom string) (output map[string]interface{}, err error) {
 	HTTPMethod := "PUT"
-	path := "/api/router_ospf"
+	path := "/api/router_ospf?mkey=-1"
 	output = make(map[string]interface{})
 
 	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
@@ -3086,7 +3086,7 @@ func (c *FortiSDKClient) DeleteRouterBgp(mkey string, vdom string) (err error) {
 
 func (c *FortiSDKClient) UpdateRouterBgp(params *map[string]interface{}, mkey string, vdom string) (output map[string]interface{}, err error) {
 	HTTPMethod := "PUT"
-	path := "/api/router_bgp"
+	path := "/api/router_bgp?mkey=-1&"
 	output = make(map[string]interface{})
 
 	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
@@ -4931,6 +4931,106 @@ func (c *FortiSDKClient) ReadLoadBalanceIppool(mkey string, vdom string) (mapTmp
 	HTTPMethod := "GET"
 	path := "/api/load_balance_ippool"
 	path += "?mkey=" + escapeURLString(mkey)
+
+	mapTmp, err = read(c, HTTPMethod, path, false, vdom)
+	return
+}
+
+func (c *FortiSDKClient) CreateSystemCertificateCertificateVerifyChildGroupMember(pkey string, params *map[string]interface{}, vdom string) (output map[string]interface{}, err error) {
+	HTTPMethod := "POST"
+	path := "/api/system_certificate_certificate_verify_child_group_member"
+	path += "?pkey=" + escapeURLString(pkey)
+	output = make(map[string]interface{})
+
+	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
+	return
+}
+
+func (c *FortiSDKClient) DeleteSystemCertificateCertificateVerifyChildGroupMember(pkey, mkey string, vdom string) (err error) {
+	HTTPMethod := "DELETE"
+	path := "/api/system_certificate_certificate_verify_child_group_member"
+	path += "?pkey=" + escapeURLString(pkey)
+	path += "&mkey=" + escapeURLString(mkey)
+
+	err = delete(c, HTTPMethod, path, vdom)
+	return
+}
+
+func (c *FortiSDKClient) UpdateSystemCertificateCertificateVerifyChildGroupMember(pkey string, params *map[string]interface{}, mkey string, vdom string) (output map[string]interface{}, err error) {
+	HTTPMethod := "PUT"
+	path := "/api/system_certificate_certificate_verify_child_group_member"
+	path += "?pkey=" + escapeURLString(pkey)
+	path += "&mkey=" + escapeURLString(mkey)
+	output = make(map[string]interface{})
+
+	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
+	return
+}
+
+func (c *FortiSDKClient) ReadSystemCertificateCertificateVerifyChildGroupMember(pkey, mkey string, vdom string) (mapTmp map[string]interface{}, err error) {
+	HTTPMethod := "GET"
+	path := "/api/system_certificate_certificate_verify_child_group_member"
+	path += "?pkey=" + escapeURLString(pkey)
+	path += "&mkey=" + escapeURLString(mkey)
+
+	mapTmp, err = read(c, HTTPMethod, path, false, vdom)
+	return
+}
+
+func (c *FortiSDKClient) CreateSystemHaChildRemoteIpMonitorList(params *map[string]interface{}, vdom string) (output map[string]interface{}, err error) {
+	HTTPMethod := "POST"
+	path := "/api/system_ha_child_remote_ip_monitor_list"
+	output = make(map[string]interface{})
+
+	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
+	return
+}
+
+func (c *FortiSDKClient) DeleteSystemHaChildRemoteIpMonitorList(mkey string, vdom string) (err error) {
+	HTTPMethod := "DELETE"
+	path := "/api/system_ha_child_remote_ip_monitor_list"
+	path += "?mkey=" + escapeURLString(mkey)
+
+	err = delete(c, HTTPMethod, path, vdom)
+	return
+}
+
+func (c *FortiSDKClient) UpdateSystemHaChildRemoteIpMonitorList(params *map[string]interface{}, mkey string, vdom string) (output map[string]interface{}, err error) {
+	HTTPMethod := "PUT"
+	path := "/api/system_ha_child_remote_ip_monitor_list"
+	path += "?mkey=" + escapeURLString(mkey)
+	output = make(map[string]interface{})
+
+	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
+	return
+}
+
+func (c *FortiSDKClient) ReadSystemHaChildRemoteIpMonitorList(mkey string, vdom string) (mapTmp map[string]interface{}, err error) {
+	HTTPMethod := "GET"
+	path := "/api/system_ha_child_remote_ip_monitor_list"
+	path += "?mkey=" + escapeURLString(mkey)
+
+	mapTmp, err = read(c, HTTPMethod, path, false, vdom)
+	return
+}
+
+func (c *FortiSDKClient) DeleteSystemTimeNtp(mkey string, vdom string) (err error) {
+	//No unset API for SystemTimeNtp
+	return
+}
+
+func (c *FortiSDKClient) UpdateSystemTimeNtp(params *map[string]interface{}, mkey string, vdom string) (output map[string]interface{}, err error) {
+	HTTPMethod := "PUT"
+	path := "/api/system_time_ntp"
+	output = make(map[string]interface{})
+
+	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
+	return
+}
+
+func (c *FortiSDKClient) ReadSystemTimeNtp(mkey string, vdom string) (mapTmp map[string]interface{}, err error) {
+	HTTPMethod := "GET"
+	path := "/api/system_time_ntp"
 
 	mapTmp, err = read(c, HTTPMethod, path, false, vdom)
 	return

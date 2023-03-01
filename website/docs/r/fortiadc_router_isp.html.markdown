@@ -11,7 +11,12 @@ Configure fortiadc route isp.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_isp" "router_isp" {
+	mkey = "1"
+	destination = "china-mobile"
+	gateway = "10.0.1.254"
+}
+
 ```
 
 ## Argument Reference

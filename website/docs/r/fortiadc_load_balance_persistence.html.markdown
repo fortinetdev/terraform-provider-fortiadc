@@ -11,7 +11,12 @@ Configure fortiadc load-balance persistence info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_persistence" "lb_persistence_radius" {
+	mkey = "persistence_radius"
+	type = "radius-attribute"
+	radius_attribute_relation = "OR"
+}
+
 ```
 
 ## Argument Reference

@@ -11,7 +11,23 @@ Configure fortiadc interface configuration.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_interface" "vlan99" {
+	mkey = "vlan99"
+	vdom = "root"
+	ip = "9.9.9.9/24"
+	status = "up"
+	type = "vlan"
+	mode = "static"
+	vlanid = "99"
+	allowaccess = "ping http https"
+	interface = "port9"
+	traffic_group = "default"
+	trust_ip = "enable"
+	secondary_ip = "enable"
+	floating = "enable"
+	floating_ip = "9.9.9.20"
+}
+
 ```
 
 ## Argument Reference

@@ -11,7 +11,14 @@ Configure fortiadc Configure ipv4 access list..
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_access_list_child_rule" "access_list_rule" {
+	mkey = "1"
+	pkey = "access_list1"
+	action = "permit"
+	prefix = "172.0.0.0/24"
+	depends_on = [fortiadc_router_access_list.access_list]
+}
+
 ```
 
 ## Argument Reference

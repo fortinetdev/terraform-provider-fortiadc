@@ -11,7 +11,13 @@ Configure fortiadc load-balance persistence info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_persistence_child_radius_attribute" "radius_attribute" {
+	pkey = "persistence_radius"
+	mkey = "1"
+	type = "32-nas-identifier"
+	depends_on = [fortiadc_load_balance_persistence.lb_persistence_radius]  
+}
+
 ```
 
 ## Argument Reference

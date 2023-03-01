@@ -11,7 +11,10 @@ Configure fortiadc Configure ipv6 access list..
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_access_list6" "access_list6" {
+	mkey = "access_list_ipv6"
+}
+
 ```
 
 ## Argument Reference

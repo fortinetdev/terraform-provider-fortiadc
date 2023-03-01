@@ -11,7 +11,13 @@ Configure fortiadc load-balance compression info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_compression_child_content_types" "comp_content_type" {
+	mkey = "1"
+	pkey = "comp1"
+	content_type = "text/html"
+	depends_on = [fortiadc_load_balance_compression.comp]
+}
+
 ```
 
 ## Argument Reference

@@ -41,7 +41,8 @@ func resourceConfigSyncList() *schema.Resource {
 			},
 			"server_ip": &schema.Schema{
 				Type:     schema.TypeString,
-				Required: true,
+				Computed: true,
+				Optional: true,
 			},
 			"password": &schema.Schema{
 				Type:     schema.TypeString,
@@ -60,8 +61,7 @@ func resourceConfigSyncList() *schema.Resource {
 			},
 			"mkey": &schema.Schema{
 				Type:     schema.TypeString,
-				Computed: true,
-				Optional: true,
+				Required: true,
 			},
 			"vdom": &schema.Schema{
 				Type:     schema.TypeString,
@@ -84,7 +84,7 @@ func resourceConfigSyncListCreate(d *schema.ResourceData, m interface{}) error {
 
 	mkey := ""
 
-	t := d.Get("server-ip")
+	t := d.Get("mkey")
 	if v, ok := t.(string); ok {
 		mkey = v
 	} else if v, ok := t.(int); ok {

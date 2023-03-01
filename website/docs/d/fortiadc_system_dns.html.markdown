@@ -21,7 +21,7 @@ output output1 {
 ```
 
 ## Argument Reference
-* `ip_primary` - (Required) Specify the mkey of the desired  system dns.
+* `` - (Required) Specify the mkey of the desired  system dns.
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 
 
@@ -30,4 +30,5 @@ output output1 {
 The following attributes are exported:
 
 * `ip_second` - Secondary DNS. 
+* `ip_primary` - Primary DNS. 
 

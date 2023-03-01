@@ -11,7 +11,10 @@ Configure fortiadc load-balance certificate-caching info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_certificate_caching" "cert_caching" {
+	mkey = "LB_CERT_CACHING_TEST"
+}
+
 ```
 
 ## Argument Reference

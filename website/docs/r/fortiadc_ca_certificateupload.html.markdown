@@ -11,7 +11,12 @@ Upload fortiadc ca.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_ca_certificateupload" "ca_cert_upload_root" {
+	mkey = "2"
+	vdom = "global"
+	cert = "/root/terr_test/host.cert"
+}
+
 ```
 
 ## Argument Reference

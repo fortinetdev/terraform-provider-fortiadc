@@ -11,7 +11,17 @@ Configure fortiadc schedule group info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_schedule_group_child_schedule_member" "sg1_member" {
+	pkey = "schedule_group_test1" 
+	mkey = "sg1_member"
+	type = "one-time"
+	startdate = "2023/03/22"
+	enddate = "2023/03/22"
+	starttime_of_startdate = "00:00"
+	endtime_of_enddate = "00:59"
+	depends_on = [fortiadc_system_schedule_group.sg1]
+}
+
 ```
 
 ## Argument Reference

@@ -16,7 +16,7 @@ func dataSourceLoadBalanceDecompressionChildContentTypes() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"mkey": &schema.Schema{
 				Type:     schema.TypeString,
-				Computed: true,
+				Required: true,
 			},
 			"content_type": &schema.Schema{
 				Type:     schema.TypeString,
@@ -24,7 +24,7 @@ func dataSourceLoadBalanceDecompressionChildContentTypes() *schema.Resource {
 			},
 			"custom_content_type": &schema.Schema{
 				Type:     schema.TypeString,
-				Required: true,
+				Computed: true,
 			},
 			"vdom": &schema.Schema{
 				Type:     schema.TypeString,
@@ -51,7 +51,7 @@ func dataSourceLoadBalanceDecompressionChildContentTypesRead(d *schema.ResourceD
 
 	mkey := ""
 
-	t := d.Get("custom_content_type")
+	t := d.Get("mkey")
 	if v, ok := t.(string); ok {
 		mkey = v
 	} else if v, ok := t.(int); ok {

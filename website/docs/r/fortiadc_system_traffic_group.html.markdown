@@ -11,7 +11,12 @@ Configure fortiadc traffic group parameters configuration.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_traffic_group" "tg1" {
+	mkey = "tg1"
+	preempt = "enable"
+	failover_order = "1 0"
+}
+
 ```
 
 ## Argument Reference

@@ -11,7 +11,18 @@ Configure fortiadc interface configuration.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_interface_child_secondary_ip_list" "vlan_sec_ip" {
+	vdom = "root"
+	pkey = "vlan99"
+	fadc_id = "1"
+	allowaccess = "ping https http"
+	ip = "9.9.9.10/24"
+	floating = "enable"
+	floating_ip = "9.9.9.11"
+	traffic_group = "tg1"
+	depends_on = [fortiadc_system_interface.vlan99]
+}
+
 ```
 
 ## Argument Reference

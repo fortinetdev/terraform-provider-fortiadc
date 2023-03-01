@@ -68,8 +68,8 @@ func dataSourceSystemCertificateOcspListRead(d *schema.ResourceData, m interface
 			if !run_filter(filters, i) {
 				continue
 			}
-			if _, ok := i["verify_others"]; ok {
-				tmps = append(tmps, i["verify_others"].(string))
+			if _, ok := i["mkey"]; ok {
+				tmps = append(tmps, i["mkey"].(string))
 			}
 		}
 	}

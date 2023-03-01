@@ -11,7 +11,10 @@ Configure fortiadc system global configuration.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_global" "system_settings" {
+	config_sync_enable = "enable"
+}
+
 ```
 
 ## Argument Reference
@@ -22,6 +25,7 @@ The following arguments are supported:
 * `vdom_admin` - enable/disable . Valid values: enable/disable.
 * `telnet_port` - the port number of the telnet service. (1,65535)
 * `pre_login_banner` - enable/disable pre-login-banner. Valid values: enable/disable.
+* `https_server_cert` - appliance's local default certificate. 
 * `hostname` - appliance's host name. 
 * `config_sync_enable` - config sync enable. Valid values: enable/disable.
 * `vdom_mode` - set vdom mode. Valid values: 1:share-network, 0:independent-network .

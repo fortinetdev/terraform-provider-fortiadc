@@ -20,11 +20,11 @@ func dataSourceRouterOspfChildNetwork() *schema.Resource {
 			},
 			"prefix": &schema.Schema{
 				Type:     schema.TypeString,
-				Required: true,
+				Computed: true,
 			},
 			"mkey": &schema.Schema{
 				Type:     schema.TypeString,
-				Computed: true,
+				Required: true,
 			},
 			"vdom": &schema.Schema{
 				Type:     schema.TypeString,
@@ -47,7 +47,7 @@ func dataSourceRouterOspfChildNetworkRead(d *schema.ResourceData, m interface{})
 
 	mkey := ""
 
-	t := d.Get("prefix")
+	t := d.Get("mkey")
 	if v, ok := t.(string); ok {
 		mkey = v
 	} else if v, ok := t.(int); ok {

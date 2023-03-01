@@ -11,7 +11,12 @@ Configure fortiadc system address.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_address" "address1" {
+	mkey = "addr_1"
+	type = "ip-netmask"
+	ip_netmask = "192.0.2.0/24"
+}
+
 ```
 
 ## Argument Reference

@@ -11,7 +11,11 @@ Configure fortiadc load-balance method info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_method" "lb_method" {
+	mkey = "method1"
+	type = "dest-ip-hash"
+}
+
 ```
 
 ## Argument Reference

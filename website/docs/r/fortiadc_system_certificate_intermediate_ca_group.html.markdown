@@ -11,7 +11,11 @@ Configure fortiadc Intermediate CA certificate group.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_certificate_intermediate_ca_group" "ca_int_group_vdom1" {
+	mkey = "ca_int_group_vdom1"
+	vdom = "vdom1"
+}
+
 ```
 
 ## Argument Reference

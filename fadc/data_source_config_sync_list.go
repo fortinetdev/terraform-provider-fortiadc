@@ -28,7 +28,7 @@ func dataSourceConfigSyncList() *schema.Resource {
 			},
 			"server_ip": &schema.Schema{
 				Type:     schema.TypeString,
-				Required: true,
+				Computed: true,
 			},
 			"password": &schema.Schema{
 				Type:     schema.TypeString,
@@ -44,7 +44,7 @@ func dataSourceConfigSyncList() *schema.Resource {
 			},
 			"mkey": &schema.Schema{
 				Type:     schema.TypeString,
-				Computed: true,
+				Required: true,
 			},
 			"vdom": &schema.Schema{
 				Type:     schema.TypeString,
@@ -67,7 +67,7 @@ func dataSourceConfigSyncListRead(d *schema.ResourceData, m interface{}) error {
 
 	mkey := ""
 
-	t := d.Get("server-ip")
+	t := d.Get("mkey")
 	if v, ok := t.(string); ok {
 		mkey = v
 	} else if v, ok := t.(int); ok {

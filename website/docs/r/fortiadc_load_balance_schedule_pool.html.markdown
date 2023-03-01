@@ -11,7 +11,13 @@ Configure fortiadc load-balance schedule pool info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_schedule_pool" "sch_pool1" {
+	mkey = "schedule_pool_test1"
+	pool = "rsp1"
+	schedule = "schedule_group_test1"
+	depends_on = [fortiadc_system_schedule_group.sg1, fortiadc_load_balance_pool.rsp1]
+}
+
 ```
 
 ## Argument Reference

@@ -11,7 +11,17 @@ Configure fortiadc system health-check info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_health_check" "hc1" {
+	mkey = "hc1"
+	type = "icmp"
+	dest_addr = "10.106.203.254"
+	addr_type = "ipv4"
+	up_retry = "5" 
+	down_retry = "5"
+	interval = "5"
+	timeout = "4"
+}
+
 ```
 
 ## Argument Reference

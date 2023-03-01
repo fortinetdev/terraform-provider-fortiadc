@@ -11,7 +11,14 @@ Configure fortiadc load-balance client-ssl-profile info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_client_ssl_profile" "SSL_PROF1" {
+	mkey = "SSL_PROFILE_TEST"
+	local_certificate_group = "LOCAL_CERT_GROUP"
+	client_certificate_verify = "cv1"
+	backend_ssl_allowed_versions = "tlsv1.1 tlsv1.2 tlsv1.0"
+	depends_on = [fortiadc_system_certificate_certificate_verify.cert_verify]
+}
+
 ```
 
 ## Argument Reference

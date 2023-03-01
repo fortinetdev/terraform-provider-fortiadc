@@ -11,7 +11,12 @@ Upload fortiadc error page.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_upload_error_page" "error_page_upload" {
+	mkey = "error_page_11"
+	vpath = "/fortiadc_error_page/new/"
+	errorpagefile = "/root/terr_test/LB_ERROR_PAGE_DEFAULT.zip"
+}
+
 ```
 
 ## Argument Reference

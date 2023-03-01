@@ -11,7 +11,12 @@ Configure fortiadc load-balance pagespeed.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_pagespeed" "pagespeed" {
+	mkey = "pagespeed_1"
+	pagespeed_profile_id = "ps_profile1"
+	depends_on = [fortiadc_load_balance_pagespeed_profile.pagespeed_profile]
+}
+
 ```
 
 ## Argument Reference

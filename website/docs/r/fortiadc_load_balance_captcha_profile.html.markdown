@@ -11,7 +11,10 @@ Configure fortiadc load-balance captcha profile.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_captcha_profile" "captcha" {
+	mkey = "lb_captcha"
+}
+
 ```
 
 ## Argument Reference

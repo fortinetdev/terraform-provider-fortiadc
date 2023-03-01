@@ -11,7 +11,11 @@ Configure fortiadc Local certificate group.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_certificate_local_cert_group" "cert_local_group_vdom1" {
+	mkey = "cert_local_group_vdom1"
+	vdom = "vdom1"
+}
+
 ```
 
 ## Argument Reference

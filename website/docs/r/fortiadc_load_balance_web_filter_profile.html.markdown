@@ -11,7 +11,10 @@ Configure fortiadc Web Filter Profile.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_web_filter_profile" "web_filt" {
+	mkey = "web_filter_1"
+}
+
 ```
 
 ## Argument Reference

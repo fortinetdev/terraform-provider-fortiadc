@@ -11,7 +11,18 @@ Configure fortiadc load-balance profile help info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_profile_child_mysql_rule" "mysql_rule" {
+	mkey = "1"
+	pkey = "custom_mysql_profile"
+	client_ip_list = "1.1.1.1"
+	db_list = "db1"
+	user_list = "user1"
+	type = "primary"
+	table_list = "t1"
+	sql_list = "sql1"
+	depends_on = [fortiadc_load_balance_profile.mysql_profile]
+}
+
 ```
 
 ## Argument Reference

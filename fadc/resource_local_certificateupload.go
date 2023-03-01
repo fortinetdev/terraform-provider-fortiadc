@@ -320,7 +320,7 @@ func getObjectLocalCertUpload(d *schema.ResourceData, sv string) (*map[string]in
 		if err != nil {
 			return &obj, err
 		} else if t != nil {
-			err = set_multipart_parameter(writer, "type", t.(string), false)
+			err = set_multipart_parameter_local(writer, "type", t.(string), false)
 			if err != nil {
 				writer.Close()
 				return &obj, err
@@ -332,7 +332,7 @@ func getObjectLocalCertUpload(d *schema.ResourceData, sv string) (*map[string]in
 		if err != nil {
 			return &obj, err
 		} else if t != nil {
-			err = set_multipart_parameter(writer, "upload", t.(string), false)
+			err = set_multipart_parameter_local(writer, "upload", t.(string), false)
 			if err != nil {
 				writer.Close()
 				return &obj, err
@@ -344,7 +344,7 @@ func getObjectLocalCertUpload(d *schema.ResourceData, sv string) (*map[string]in
 		if err != nil {
 			return &obj, err
 		} else if t != nil {
-			err = set_multipart_parameter(writer, "passwd", t.(string), false)
+			err = set_multipart_parameter_local(writer, "passwd", t.(string), false)
 			if err != nil {
 				writer.Close()
 				return &obj, err
@@ -357,7 +357,7 @@ func getObjectLocalCertUpload(d *schema.ResourceData, sv string) (*map[string]in
 		if err != nil {
 			return &obj, err
 		} else if t != nil {
-			err = set_multipart_parameter(writer, "cert", t.(string), true)
+			err = set_multipart_parameter_local(writer, "cert", t.(string), true)
 			if err != nil {
 				writer.Close()
 				return &obj, err
@@ -370,7 +370,7 @@ func getObjectLocalCertUpload(d *schema.ResourceData, sv string) (*map[string]in
 		if err != nil {
 			return &obj, err
 		} else if t != nil {
-			err = set_multipart_parameter(writer, "key", t.(string), true)
+			err = set_multipart_parameter_local(writer, "key", t.(string), true)
 			if err != nil {
 				writer.Close()
 				return &obj, err
@@ -383,7 +383,7 @@ func getObjectLocalCertUpload(d *schema.ResourceData, sv string) (*map[string]in
 		if err != nil {
 			return &obj, err
 		} else if t != nil {
-			err = set_multipart_parameter(writer, "mkey", t.(string), false)
+			err = set_multipart_parameter_local(writer, "mkey", t.(string), false)
 			if err != nil {
 				writer.Close()
 				return &obj, err
@@ -396,7 +396,7 @@ func getObjectLocalCertUpload(d *schema.ResourceData, sv string) (*map[string]in
 		if err != nil {
 			return &obj, err
 		} else if t != nil {
-			err = set_multipart_parameter(writer, "vdom", t.(string), false)
+			err = set_multipart_parameter_local(writer, "vdom", t.(string), false)
 			if err != nil {
 				writer.Close()
 				return &obj, err

@@ -11,7 +11,12 @@ Configure fortiadc service group info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_servicegrp" "svcgrp" {
+	mkey = "svc_grp1"
+	vdom = "root"
+	member_list = "DNS LDAP"
+}
+
 ```
 
 ## Argument Reference

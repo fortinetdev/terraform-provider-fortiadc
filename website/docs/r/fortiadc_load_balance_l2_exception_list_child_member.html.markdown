@@ -11,7 +11,14 @@ Configure fortiadc load-balance layer2 exception list.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_l2_exception_list_child_member" "exception_child" {
+	mkey = "1"
+	pkey = "l2_exception"
+	type = "ip netmask"
+	ip_netmask = "2.2.2.2/24"
+	depends_on = [fortiadc_load_balance_l2_exception_list.lb_l2_exception]
+}
+
 ```
 
 ## Argument Reference

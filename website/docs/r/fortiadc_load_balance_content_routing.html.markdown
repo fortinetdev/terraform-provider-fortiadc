@@ -11,7 +11,14 @@ Configure fortiadc load-balance content routing info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_content_routing" "c_routing1" {
+	mkey = "cr1"
+	type = "l7-content-routing"
+	pool = "rsp1"
+	comments = "content_routing_comments"
+	depends_on = [fortiadc_load_balance_pool.rsp1]
+}
+
 ```
 
 ## Argument Reference

@@ -13,7 +13,7 @@ Use this data source to get information on an fortiadc config sync list
 
 ```hcl
  data "fortiadc_config_sync_list" sample1 {
-  server_ip = "1"
+  mkey = "1"
 }
 
 output output1 {
@@ -22,7 +22,7 @@ output output1 {
 ```
 
 ## Argument Reference
-* `server-ip` - (Required) Specify the mkey of the desired  config sync list.
+* `mkey` - (Required) Specify the mkey of the desired  config sync list.
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 
 
@@ -30,12 +30,12 @@ output output1 {
 
 The following attributes are exported:
 
-* `server_ip` - ip address of server.
+* `mkey` - config sync list name.
 * `comment` - comment for sync-list. 
 * `status` - status. 
 * `filename` - filename. 
+* `server_ip` - ip address of server. 
 * `password` - peer admin password. 
 * `type` - synchronization type. 
 * `port` - port of server. (1,65535)
-* `mkey` - config sync list name. 
 

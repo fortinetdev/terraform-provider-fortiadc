@@ -11,7 +11,15 @@ Configure fortiadc load-balance pool info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_pool" "rsp1" {
+	mkey = "rsp1"
+	pool_type = "ipv4"
+	health_check = "enable"
+	health_check_relationship = "AND"
+	health_check_list = "LB_HLTHCK_ICMP LB_HLTHCK_HTTPS "
+	type = "static"
+}
+
 ```
 
 ## Argument Reference

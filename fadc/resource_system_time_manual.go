@@ -23,15 +23,57 @@ func resourceSystemTimeManual() *schema.Resource {
 		},
 
 		Schema: map[string]*schema.Schema{
-			"tz": &schema.Schema{
+			"year": &schema.Schema{
+				Type:     schema.TypeInt,
+				Computed: true,
+				Optional: true,
+			},
+			"month": &schema.Schema{
+				Type:     schema.TypeInt,
+				Computed: true,
+				Optional: true,
+			},
+			"mday": &schema.Schema{
+				Type:     schema.TypeInt,
+				Computed: true,
+				Optional: true,
+			},
+			"hour": &schema.Schema{
+				Type:     schema.TypeInt,
+				Computed: true,
+				Optional: true,
+			},
+			"minute": &schema.Schema{
+				Type:     schema.TypeInt,
+				Computed: true,
+				Optional: true,
+			},
+			"second": &schema.Schema{
+				Type:     schema.TypeInt,
+				Computed: true,
+				Optional: true,
+			},
+			"ntpsync": &schema.Schema{
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"syncinterval": &schema.Schema{
 				Type:     schema.TypeString,
 				Computed: true,
 				Optional: true,
 			},
-			"dst": &schema.Schema{
+			"ntpserver": &schema.Schema{
 				Type:     schema.TypeString,
 				Computed: true,
 				Optional: true,
+			},
+			"tz": &schema.Schema{
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"dst": &schema.Schema{
+				Type:     schema.TypeString,
+				Required: true,
 			},
 		},
 	}
@@ -131,6 +173,51 @@ func flattenSystemTimeManualDst(v interface{}, d *schema.ResourceData, pre strin
 func refreshObjectSystemTimeManual(d *schema.ResourceData, o map[string]interface{}, sv string) error {
 	var err error
 
+	if err = d.Set("year", flattenSystemTimeManualTz(o["year"], d, "year", sv)); err != nil {
+		if !fortiAPIPatch(o["year"]) {
+			return fmt.Errorf("Error reading year: %v", err)
+		}
+	}
+	if err = d.Set("month", flattenSystemTimeManualTz(o["month"], d, "month", sv)); err != nil {
+		if !fortiAPIPatch(o["month"]) {
+			return fmt.Errorf("Error reading month: %v", err)
+		}
+	}
+	if err = d.Set("mday", flattenSystemTimeManualTz(o["mday"], d, "mday", sv)); err != nil {
+		if !fortiAPIPatch(o["mday"]) {
+			return fmt.Errorf("Error reading mday: %v", err)
+		}
+	}
+	if err = d.Set("hour", flattenSystemTimeManualTz(o["hour"], d, "hour", sv)); err != nil {
+		if !fortiAPIPatch(o["hour"]) {
+			return fmt.Errorf("Error reading hour: %v", err)
+		}
+	}
+	if err = d.Set("minute", flattenSystemTimeManualTz(o["minute"], d, "minute", sv)); err != nil {
+		if !fortiAPIPatch(o["minute"]) {
+			return fmt.Errorf("Error reading minute: %v", err)
+		}
+	}
+	if err = d.Set("second", flattenSystemTimeManualTz(o["second"], d, "second", sv)); err != nil {
+		if !fortiAPIPatch(o["second"]) {
+			return fmt.Errorf("Error reading second: %v", err)
+		}
+	}
+	if err = d.Set("ntpsync", flattenSystemTimeManualTz(o["ntpsync"], d, "ntpsync", sv)); err != nil {
+		if !fortiAPIPatch(o["ntpsync"]) {
+			return fmt.Errorf("Error reading ntpsync: %v", err)
+		}
+	}
+	if err = d.Set("syncinterval", flattenSystemTimeManualTz(o["syncinterval"], d, "syncinterval", sv)); err != nil {
+		if !fortiAPIPatch(o["syncinterval"]) {
+			return fmt.Errorf("Error reading syncinterval: %v", err)
+		}
+	}
+	if err = d.Set("ntpserver", flattenSystemTimeManualTz(o["ntpserver"], d, "ntpserver", sv)); err != nil {
+		if !fortiAPIPatch(o["ntpserver"]) {
+			return fmt.Errorf("Error reading ntpserver: %v", err)
+		}
+	}
 	if err = d.Set("tz", flattenSystemTimeManualTz(o["tz"], d, "tz", sv)); err != nil {
 		if !fortiAPIPatch(o["tz"]) {
 			return fmt.Errorf("Error reading tz: %v", err)
@@ -179,6 +266,127 @@ func getObjectSystemTimeManual(d *schema.ResourceData, setArgNil bool, sv string
 				return &obj, err
 			} else if t != nil {
 				obj["dst"] = t
+			}
+		}
+	}
+
+	if v, ok := d.GetOk("year"); ok {
+		if setArgNil {
+			obj["year"] = nil
+		} else {
+			t, err := expandSystemTimeManualDst(d, v, "year", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj["year"] = t
+			}
+		}
+	}
+	if v, ok := d.GetOk("month"); ok {
+		if setArgNil {
+			obj["month"] = nil
+		} else {
+			t, err := expandSystemTimeManualDst(d, v, "month", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj["month"] = t
+			}
+		}
+	}
+	if v, ok := d.GetOk("mday"); ok {
+		if setArgNil {
+			obj["mday"] = nil
+		} else {
+			t, err := expandSystemTimeManualDst(d, v, "mday", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj["mday"] = t
+			}
+		}
+	}
+	if v, ok := d.GetOk("hour"); ok {
+		if setArgNil {
+			obj["hour"] = nil
+		} else {
+			t, err := expandSystemTimeManualDst(d, v, "hour", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj["hour"] = t
+			}
+		}
+	}
+	if v, ok := d.GetOk(""); ok {
+		if setArgNil {
+			obj[""] = nil
+		} else {
+			t, err := expandSystemTimeManualDst(d, v, "", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj[""] = t
+			}
+		}
+	}
+	if v, ok := d.GetOk("minute"); ok {
+		if setArgNil {
+			obj["minute"] = nil
+		} else {
+			t, err := expandSystemTimeManualDst(d, v, "minute", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj["minute"] = t
+			}
+		}
+	}
+	if v, ok := d.GetOk("second"); ok {
+		if setArgNil {
+			obj["second"] = nil
+		} else {
+			t, err := expandSystemTimeManualDst(d, v, "second", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj["second"] = t
+			}
+		}
+	}
+	if v, ok := d.GetOk("ntpsync"); ok {
+		if setArgNil {
+			obj["ntpsync"] = nil
+		} else {
+			t, err := expandSystemTimeManualDst(d, v, "ntpsync", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj["ntpsync"] = t
+			}
+		}
+	}
+	if v, ok := d.GetOk("ntpserver"); ok {
+		if setArgNil {
+			obj["ntpserver"] = nil
+		} else {
+			t, err := expandSystemTimeManualDst(d, v, "ntpserver", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj["ntpserver"] = t
+			}
+		}
+	}
+	if v, ok := d.GetOk("syncinterval"); ok {
+		if setArgNil {
+			obj["syncinterval"] = nil
+		} else {
+			t, err := expandSystemTimeManualDst(d, v, "syncinterval", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj["syncinterval"] = t
 			}
 		}
 	}

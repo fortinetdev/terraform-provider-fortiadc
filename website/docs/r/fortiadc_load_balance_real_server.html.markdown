@@ -11,7 +11,14 @@ Configure fortiadc load-balance real server info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_real_server" "rs1" {
+	mkey = "rs1"
+	server_type     = "static"
+	status    = "enable"
+	type = "ip"
+	address = "10.10.10.10"
+}
+
 ```
 
 ## Argument Reference

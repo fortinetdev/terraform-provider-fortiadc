@@ -11,7 +11,13 @@ Configure fortiadc load-balance content rewriting info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_content_rewriting" "cr1" {
+	mkey = "cr1"
+	action = "redirect"
+	redirect = "redirect_test"
+	comments = "terraform_test"
+}
+
 ```
 
 ## Argument Reference

@@ -139,6 +139,10 @@ func Provider() *schema.Provider {
 			"fortiadc_load_balance_pool_child_pool_memberlist": dataSourceLoadBalancePoolChildPoolMemberList(),
 			"fortiadc_security_ips_profile":                    dataSourceSecurityIpsProfile(),
 			"fortiadc_security_ips_profilelist":                dataSourceSecurityIpsProfileList(),*/
+			"fortiadc_system_ha_child_remote_ip_monitor_list":                          dataSourceSystemHaChildRemoteIpMonitorList(),
+			"fortiadc_system_ha_child_remote_ip_monitor_listlist":                      dataSourceSystemHaChildRemoteIpMonitorListList(),
+			"fortiadc_system_certificate_certificate_verify_child_group_member":        dataSourceSystemCertificateCertificateVerifyChildGroupMember(),
+			"fortiadc_system_certificate_certificate_verify_child_group_memberlist":    dataSourceSystemCertificateCertificateVerifyChildGroupMemberList(),
 			"fortiadc_system_global":                                                   dataSourceSystemGlobal(),
 			"fortiadc_router_access_list":                                              dataSourceRouterAccessList(),
 			"fortiadc_router_access_listlist":                                          dataSourceRouterAccessListList(),
@@ -410,6 +414,8 @@ func Provider() *schema.Provider {
 			"fortiadc_system_certificate_intermediate_ca": resourceSystemCertificateIntermediateCa(),
 			"fortiadc_vdom":                               resourceVdom(),
 			//auto gen path
+			"fortiadc_system_ha_child_remote_ip_monitor_list":                      resourceSystemHaChildRemoteIpMonitorList(),
+			"fortiadc_system_certificate_certificate_verify_child_group_member":    resourceSystemCertificateCertificateVerifyChildGroupMember(),
 			"fortiadc_system_global":                                               resourceSystemGlobal(),
 			"fortiadc_router_access_list":                                          resourceRouterAccessList(),
 			"fortiadc_load_balance_content_routing_child_match_condition":          resourceLoadBalanceContentRoutingChildMatchCondition(),

@@ -11,7 +11,13 @@ Configure fortiadc pagespeed profile.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_pagespeed_profile" "pagespeed_profile" {
+	mkey = "ps_profile1"
+	html = "enable"
+	css = "enable"
+	image = "enable"
+}
+
 ```
 
 ## Argument Reference

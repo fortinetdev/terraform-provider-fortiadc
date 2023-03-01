@@ -21,7 +21,7 @@ output output1 {
 ```
 
 ## Argument Reference
-* `address` - (Required) Specify the mkey of the desired  system mailserver.
+* `` - (Required) Specify the mkey of the desired  system mailserver.
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 
 
@@ -31,6 +31,7 @@ The following attributes are exported:
 
 * `username` - username for SMTP authentication. 
 * `auth` - enable/disable SMTP authentication. 
+* `address` - SMTP server address. 
 * `security` - set security option. 
 * `password` - password for SMTP authentication. 
 * `port` - SMTP server port. (1,65535)

@@ -11,7 +11,10 @@ Configure fortiadc load-balance clone pool info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_clone_pool" "clone_pool_1" {
+	mkey = "cp1"
+}
+
 ```
 
 ## Argument Reference

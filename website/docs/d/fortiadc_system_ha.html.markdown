@@ -21,7 +21,7 @@ output output1 {
 ```
 
 ## Argument Reference
-* `mode` - (Required) Specify the mkey of the desired  system ha.
+* `` - (Required) Specify the mkey of the desired  system ha.
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 
 
@@ -52,6 +52,7 @@ The following attributes are exported:
 * `interval` - heartbeat interval (1-20 (100*ms)). (1,20)
 
 * `arp_interval` - interval for sending arp (1-20 sec). (1,20)
+* `mode` - high availability mode. 
 * `mgmt_status` - Management status enable/disable. 
 * `interface_list` - interface list to track. 
 * `sync_l7_persistent` - sync http persistent. 

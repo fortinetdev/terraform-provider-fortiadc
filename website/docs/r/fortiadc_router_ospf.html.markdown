@@ -11,7 +11,12 @@ Configure fortiadc Configure OSPF..
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_ospf" "ospf" {
+	router_id = "10.106.203.254"
+	redistribute_static = "enable"
+	distance = "100"
+}
+
 ```
 
 ## Argument Reference
@@ -25,6 +30,7 @@ The following arguments are supported:
 * `redistribute_static_metric_type` - Redistribute static metric type setting.. Valid values: 1:1, 2:2 .
 * `default_information_metric_type` - Default information metric type.. Valid values: 1:1, 2:2 .
 * `redistribute_connected_metric` - Redistribute connected metric setting.. (-1,16777214)
+* `router_id` - router-id must be set.. 
 * `default_information_originate` - Area type setting.. Valid values: 1:enable, 0:disable, 2:always .
 * `redistribute_static_metric` - Redistribute static metric setting.. (-1,16777214)
 

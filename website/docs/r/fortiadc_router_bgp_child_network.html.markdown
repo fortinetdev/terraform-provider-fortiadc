@@ -11,7 +11,12 @@ Configure fortiadc Configure BGP..
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_bgp_child_network" "bgp_network" {
+	mkey = "1"
+	type = "ipv4"
+	prefix = "10.10.10.100"
+}
+
 ```
 
 ## Argument Reference

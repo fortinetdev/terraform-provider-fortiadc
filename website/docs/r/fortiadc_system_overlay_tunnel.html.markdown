@@ -11,7 +11,13 @@ Configure fortiadc overlay tunnel.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_overlay_tunnel" "overlay_t" {
+	mkey = "overlay_tunnel1"
+	interface = "port7"
+	dstip = "192.0.2.1"
+	vni = "11"
+}
+
 ```
 
 ## Argument Reference

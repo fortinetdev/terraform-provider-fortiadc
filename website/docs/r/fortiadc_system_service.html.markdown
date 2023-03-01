@@ -11,7 +11,11 @@ Configure fortiadc system service.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_service" "ip" {
+	mkey = "custom_ip"
+	protocol = "3"
+}
+
 ```
 
 ## Argument Reference

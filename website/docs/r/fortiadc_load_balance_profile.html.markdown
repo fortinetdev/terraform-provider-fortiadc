@@ -11,7 +11,12 @@ Configure fortiadc load-balance profile help info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_profile" "mysql_profile" {
+	mkey = "custom_mysql_profile"
+	type = "mysql"
+	mysql_mode = "sharding"
+}
+
 ```
 
 ## Argument Reference

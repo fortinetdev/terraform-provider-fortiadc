@@ -11,7 +11,11 @@ Configure fortiadc load-balance real-server-ssl-profile info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_real_server_ssl_profile" "ssl_profile_1" {
+	mkey = "ssl_profile_1"
+	ssl = "enable"
+}
+
 ```
 
 ## Argument Reference

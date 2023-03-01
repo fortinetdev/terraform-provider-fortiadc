@@ -19,9 +19,9 @@ TODO
 The following arguments are supported:
 
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
-* `prefix` - prefix.
+* `mkey` - Network entry ID..
 * `area_id` - Attach the network to area. 
-* `mkey` - Network entry ID.. 
+* `prefix` - prefix. 
 
 ## Attribute Reference
 

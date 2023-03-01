@@ -11,7 +11,15 @@ Configure fortiadc load-balance content rewriting info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_content_rewriting_child_match_condition" "cr_match" {
+	pkey = "cr1"
+	mkey = "2"
+	content = "match_string"
+	type = "string"
+	ignorecase = "enable"
+	depends_on = [fortiadc_load_balance_content_rewriting.cr1]
+}
+
 ```
 
 ## Argument Reference

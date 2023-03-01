@@ -11,7 +11,16 @@ Configure fortiadc Configure ipv4 prefix list..
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_router_prefix_list_child_rule" "prefix_list_rule" {
+	mkey = "1"
+	pkey = "prefix_list_1"
+	action = "permit"
+	prefix = "172.1.1.0/24"
+	ge = "0"
+	le = "0"
+	depends_on = [fortiadc_router_prefix_list.prefix_list]
+}
+
 ```
 
 ## Argument Reference

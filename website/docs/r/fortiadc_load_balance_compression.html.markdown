@@ -11,7 +11,12 @@ Configure fortiadc load-balance compression info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_compression" "comp" {
+	mkey = "comp1"
+	uri_list_type = "exclude"
+	max_cpu_usage = "100"
+}
+
 ```
 
 ## Argument Reference

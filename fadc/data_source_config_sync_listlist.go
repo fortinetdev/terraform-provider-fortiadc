@@ -68,8 +68,8 @@ func dataSourceConfigSyncListListRead(d *schema.ResourceData, m interface{}) err
 			if !run_filter(filters, i) {
 				continue
 			}
-			if _, ok := i["server-ip"]; ok {
-				tmps = append(tmps, i["server-ip"].(string))
+			if _, ok := i["mkey"]; ok {
+				tmps = append(tmps, i["mkey"].(string))
 			}
 		}
 	}

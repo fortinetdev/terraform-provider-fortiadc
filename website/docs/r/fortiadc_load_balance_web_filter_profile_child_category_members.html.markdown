@@ -11,7 +11,13 @@ Configure fortiadc Web Filter Profile.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_web_filter_profile_child_category_members" "web_filt_child" {
+	mkey = "1"
+	pkey = "web_filter_1"
+	category = "Security Risk"
+	depends_on = [fortiadc_load_balance_web_filter_profile.web_filt]
+}
+
 ```
 
 ## Argument Reference

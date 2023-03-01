@@ -11,7 +11,26 @@ Configure fortiadc HA parameters configuration.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_ha" "HA" {
+	mode = "active-active-vrrp"
+	hbdev = "port4"
+	group_name = "terraform_ha"
+	groupid = "10"
+	mgmt_status = "enable"
+	mgmt_interface = "port6"
+	mgmt_ip_allowaccess = "ping http https ssh"
+	mgmt_ip = "6.6.6.10"
+	monitor_enable = "enable"
+	sync_l4_connection = "enable"
+	sync_l4_persistent = "enable"
+	sync_l7_persistent = "enable"
+	hbtype = "unicast"
+	local_address = "202.151.212.1"
+	peer_address = "202.151.212.2"
+	config_priority = "50"
+	priority = "2"
+}
+
 ```
 
 ## Argument Reference
@@ -42,6 +61,7 @@ The following arguments are supported:
 * `interval` - heartbeat interval (1-20 (100*ms)). (1,20)
 
 * `arp_interval` - interval for sending arp (1-20 sec). (1,20)
+* `mode` - high availability mode. Valid values: 1:active-passive, 0:standalone, 3:active-active-vrrp, 2:active-active .
 * `mgmt_status` - Management status enable/disable. Valid values: enable/disable.
 * `interface_list` - interface list to track. 
 * `sync_l7_persistent` - sync http persistent. Valid values: enable/disable.

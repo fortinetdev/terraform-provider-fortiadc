@@ -21,7 +21,7 @@ output output1 {
 ```
 
 ## Argument Reference
-* `router-id` - (Required) Specify the mkey of the desired  router ospf.
+* `` - (Required) Specify the mkey of the desired  router ospf.
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 
 
@@ -35,6 +35,7 @@ The following attributes are exported:
 * `redistribute_static_metric_type` - Redistribute static metric type setting.. 
 * `default_information_metric_type` - Default information metric type.. 
 * `redistribute_connected_metric` - Redistribute connected metric setting.. (-1,16777214)
+* `router_id` - router-id must be set.. 
 * `default_information_originate` - Area type setting.. 
 * `redistribute_static_metric` - Redistribute static metric setting.. (-1,16777214)
 

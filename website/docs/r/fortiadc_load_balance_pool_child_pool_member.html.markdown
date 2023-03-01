@@ -11,7 +11,15 @@ Configure fortiadc load-balance pool info.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_load_balance_pool_child_pool_member" "rsp_member1" {
+	mkey = "1"
+	port = "80"
+	real_server_id = "rs1"
+	cookie = "rs1"
+	pkey = "rsp1"
+	depends_on = [fortiadc_load_balance_pool.rsp1, fortiadc_load_balance_real_server.rs1]
+}
+
 ```
 
 ## Argument Reference

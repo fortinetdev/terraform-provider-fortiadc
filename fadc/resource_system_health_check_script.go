@@ -28,7 +28,7 @@ func resourceSystemHealthCheckScript() *schema.Resource {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"file": &schema.Schema{
+			"script": &schema.Schema{
 				Type:     schema.TypeString,
 				Computed: true,
 				Optional: true,
@@ -172,8 +172,8 @@ func refreshObjectSystemHealthCheckScript(d *schema.ResourceData, o map[string]i
 		}
 	}
 
-	if err = d.Set("file", flattenSystemHealthCheckScriptFile(o["file"], d, "file", sv)); err != nil {
-		if !fortiAPIPatch(o["file"]) {
+	if err = d.Set("script", flattenSystemHealthCheckScriptFile(o["script"], d, "script", sv)); err != nil {
+		if !fortiAPIPatch(o["script"]) {
 			return fmt.Errorf("Error reading file: %v", err)
 		}
 	}
@@ -201,12 +201,12 @@ func getObjectSystemHealthCheckScript(d *schema.ResourceData, sv string) (*map[s
 		}
 	}
 
-	if v, ok := d.GetOk("file"); ok {
-		t, err := expandSystemHealthCheckScriptFile(d, v, "file", sv)
+	if v, ok := d.GetOk("script"); ok {
+		t, err := expandSystemHealthCheckScriptFile(d, v, "script", sv)
 		if err != nil {
 			return &obj, err
 		} else if t != nil {
-			obj["file"] = t
+			obj["script"] = t
 		}
 	}
 

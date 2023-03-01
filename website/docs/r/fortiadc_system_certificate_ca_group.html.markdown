@@ -11,7 +11,11 @@ Configure fortiadc CA certificate group.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_certificate_ca_group" "ca_group_vdom1" {
+	mkey = "ca_group_vdom1"
+	vdom = "vdom1"
+}
+
 ```
 
 ## Argument Reference

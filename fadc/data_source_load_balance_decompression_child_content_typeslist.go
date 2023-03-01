@@ -72,8 +72,8 @@ func dataSourceLoadBalanceDecompressionChildContentTypesListRead(d *schema.Resou
 			if !run_filter(filters, i) {
 				continue
 			}
-			if _, ok := i["custom_content_type"]; ok {
-				tmps = append(tmps, i["custom_content_type"].(string))
+			if _, ok := i["mkey"]; ok {
+				tmps = append(tmps, i["mkey"].(string))
 			}
 		}
 	}

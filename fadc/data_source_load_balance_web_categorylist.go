@@ -68,8 +68,8 @@ func dataSourceLoadBalanceWebCategoryListRead(d *schema.ResourceData, m interfac
 			if !run_filter(filters, i) {
 				continue
 			}
-			if _, ok := i["id"]; ok {
-				tmps = append(tmps, i["id"].(string))
+			if _, ok := i["mkey"]; ok {
+				tmps = append(tmps, i["mkey"].(string))
 			}
 		}
 	}

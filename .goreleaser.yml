@@ -4,7 +4,7 @@ before:
   hooks:
     # this is just an example and not a requirement for provider building/publishing
     - go mod tidy
-project_name: fortiadc_terrform
+project_name: terraform-provider-fortiadc
 builds:
 - env:
     # goreleaser does not work with CGO, it could also complicate
@@ -32,9 +32,15 @@ builds:
   binary: '{{ .ProjectName }}_v{{ .Version }}'
 archives:
 - format: zip
-  name_template: 'terraform-provider-fortiadc_{ .Version }}_{{ .Os }}_{{ .Arch }}'
+  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+
 checksum:
-  name_template: 'terraform-provider-fortiadc__{{ .Version }}_SHA256SUMS'
+
+  name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
+
+  algorithm: sha256
+
+
   algorithm: sha256
 signs:
   - artifacts: checksum

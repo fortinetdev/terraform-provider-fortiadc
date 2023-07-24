@@ -7,7 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/terraform-providers/terraform-provider-fortiadc/adc-sdk/request"
+	"github.com/fortinetdev/terraform-provider-fortiadc/adc-sdk/request"
 )
 
 // JSONJSONGenericAPI contains the parameters for Create API function

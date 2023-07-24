@@ -11,9 +11,9 @@ import (
 	"time"
 
 	"errors"
-	"github.com/terraform-providers/terraform-provider-fortiadc/adc-sdk/auth"
-	"github.com/terraform-providers/terraform-provider-fortiadc/adc-sdk/config"
-	"github.com/terraform-providers/terraform-provider-fortiadc/adc-sdk/request"
+	"github.com/fortinetdev/terraform-provider-fortiadc/adc-sdk/auth"
+	"github.com/fortinetdev/terraform-provider-fortiadc/adc-sdk/config"
+	"github.com/fortinetdev/terraform-provider-fortiadc/adc-sdk/request"
 	"strconv"
 )
 

@@ -11,9 +11,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/terraform-providers/terraform-provider-fortiadc/adc-sdk/auth"
+	"github.com/fortinetdev/terraform-provider-fortiadc/adc-sdk/auth"
 	//forticlient "github.com/fortinetdev/forti-sdk-go/fortiadc/sdkcore"
-	forticlient "github.com/terraform-providers/terraform-provider-fortiadc/adc-sdk/sdkcore"
+	forticlient "github.com/fortinetdev/terraform-provider-fortiadc/adc-sdk/sdkcore"
 )
 
 // Config gets the authentication information from the given metadata

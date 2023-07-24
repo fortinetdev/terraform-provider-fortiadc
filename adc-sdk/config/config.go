@@ -3,7 +3,7 @@ package config
 import (
 	"net/http"
 
-	"github.com/terraform-providers/terraform-provider-fortiadc/adc-sdk/auth"
+	"github.com/fortinetdev/terraform-provider-fortiadc/adc-sdk/auth"
 )
 
 // Config provides configuration to a FortiOS client instance

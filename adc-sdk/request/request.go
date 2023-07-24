@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/terraform-providers/terraform-provider-fortiadc/adc-sdk/config"
+	"github.com/fortinetdev/terraform-provider-fortiadc/adc-sdk/config"
 )
 
 // Request describes the request to FortiOS service

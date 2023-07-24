@@ -14,17 +14,17 @@
 
 ## Building the Provider
 
-1. Clone repository to: `$GOPATH/src/github.com/terraform-providers/terraform-provider-fortiadc`.
+1. Clone repository to: `$GOPATH/src/github.com/fortinetdev/terraform-provider-fortiadc`.
 
     ```sh
-    $ mkdir -p $GOPATH/src/github.com/terraform-providers; cd $GOPATH/src/github.com/terraform-providers
+    $ mkdir -p $GOPATH/src/github.com/fortinetdev; cd $GOPATH/src/github.com/fortinetdev
     $ git clone git@github.com:fortinetdev/terraform-provider-fortiadc
     ```
 
 2. Enter the provider directory and build the provider.
 
     ```sh
-    $ cd $GOPATH/src/github.com/terraform-providers/terraform-provider-fortiadc
+    $ cd $GOPATH/src/github.com/fortinetdev/terraform-provider-fortiadc
     $ make build
     ```
 

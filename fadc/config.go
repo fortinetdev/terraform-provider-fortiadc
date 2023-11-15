@@ -368,3 +368,17 @@ func toCertFormat(v interface{}) interface{} {
 	}
 	return v
 }
+
+// parsePkeyMkeyImportID parses the import ID of a resource and returns the pkey and mkey and new state id
+func parsePkeyMkeyImportID(id string) (string, string, string, error) {
+	idParts := strings.Split(id, ".")
+	if len(idParts) != 2 || idParts[0] == "" || idParts[1] == "" {
+		return "", "", "", fmt.Errorf("unexpected format of import ID (%q), expected pkey.mkey", id)
+	}
+
+	pkey := idParts[0]
+	mkey := idParts[1]
+	newID := pkey + "_" + mkey
+
+	return pkey, mkey, newID, nil
+}

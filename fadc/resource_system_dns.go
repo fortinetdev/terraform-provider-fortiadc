@@ -33,6 +33,10 @@ func resourceSystemDns() *schema.Resource {
 				Computed: true,
 				Optional: true,
 			},
+			"vdom": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+			},
 		},
 	}
 }

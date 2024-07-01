@@ -57,3 +57,5 @@ The following attributes are exported:
 
 * `gui_device_longtitude` - longitude between (-180, 180). 
 
+* `ip_second` - Secondary DNS.
+* `ip_primary` - Primary DNS.

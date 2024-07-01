@@ -11,7 +11,10 @@ Configure fortiadc system scripting.
 
 ## Example Usage
 ```hcl
-TODO
+resource "fortiadc_system_scripting" "script" {
+        mkey = "HTTP_TEST2"
+        script = "when HTTP_REQUEST{\ndebug(\"test\")\n}"
+}
 ```
 
 ## Argument Reference
@@ -20,7 +23,7 @@ The following arguments are supported:
 
 * `vdom` - Specifies the vdom to which the data source will be applied when the FortiADC unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
 * `mkey` - scripting name.
-* `file` - scripting. 
+* `script` - content of scripting. 
 
 ## Attribute Reference
 

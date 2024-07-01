@@ -31,5 +31,5 @@ output output1 {
 The following attributes are exported:
 
 * `mkey` - stream scripting name.
-* `file` - scripting. 
+* `script` - content of scripting. 
 

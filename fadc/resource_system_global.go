@@ -128,6 +128,16 @@ func resourceSystemGlobal() *schema.Resource {
 				Computed: true,
 				Optional: true,
 			},
+			"ip_primary": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"ip_second": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
 		},
 	}
 }
@@ -299,6 +309,14 @@ func flattenSystemGlobalGuiDeviceLongtitude(v interface{}, d *schema.ResourceDat
 	return v
 }
 
+func flattenSystemGlobalPrimaryDNS(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+	return v
+}
+
+func flattenSystemGlobalSecondaryDNS(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+	return v
+}
+
 func refreshObjectSystemGlobal(d *schema.ResourceData, o map[string]interface{}, sv string) error {
 	var err error
 
@@ -428,6 +446,18 @@ func refreshObjectSystemGlobal(d *schema.ResourceData, o map[string]interface{},
 		}
 	}
 
+	if err = d.Set("ip_primary", flattenSystemGlobalPrimaryDNS(o["ip_primary"], d, "ip_primary", sv)); err != nil {
+		if !fortiAPIPatch(o["ip_primary"]) {
+			return fmt.Errorf("Error reading ip_primary: %v", err)
+		}
+	}
+
+	if err = d.Set("ip_second", flattenSystemGlobalSecondaryDNS(o["ip_second"], d, "ip_second", sv)); err != nil {
+		if !fortiAPIPatch(o["ip_second"]) {
+			return fmt.Errorf("Error reading ip_second: %v", err)
+		}
+	}
+
 	return nil
 }
 
@@ -512,6 +542,14 @@ func expandSystemGlobalUseDefaultHostname(d *schema.ResourceData, v interface{},
 }
 
 func expandSystemGlobalGuiDeviceLongtitude(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+	return v, nil
+}
+
+func expandSystemGlobalPrimaryDNS(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+	return v, nil
+}
+
+func expandSystemGlobalSecondaryDNS(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
 	return v, nil
 }
 
@@ -787,6 +825,32 @@ func getObjectSystemGlobal(d *schema.ResourceData, setArgNil bool, sv string) (*
 				return &obj, err
 			} else if t != nil {
 				obj["gui-device-longtitude"] = t
+			}
+		}
+	}
+
+	if v, ok := d.GetOk("ip_primary"); ok {
+		if setArgNil {
+			obj["ip_primary"] = nil
+		} else {
+			t, err := expandSystemGlobalPrimaryDNS(d, v, "ip_primay", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj["ip_primary"] = t
+			}
+		}
+	}
+
+	if v, ok := d.GetOk("ip_second"); ok {
+		if setArgNil {
+			obj["ip_second"] = nil
+		} else {
+			t, err := expandSystemGlobalSecondaryDNS(d, v, "ip_second", sv)
+			if err != nil {
+				return &obj, err
+			} else if t != nil {
+				obj["ip_second"] = t
 			}
 		}
 	}

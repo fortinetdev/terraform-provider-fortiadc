@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/fortinetdev/terraform-provider-fortiadc/adc-sdk/auth"
@@ -25,6 +26,8 @@ type Config struct {
 	CABundleContent string
 	Vdom            string
 	HTTPProxy       string
+	HTTPSProxy      string
+	NOProxy         string
 
 	PeerAuth   string
 	CaCert     string
@@ -86,7 +89,7 @@ func bFortiOSHostnameExist(c *Config) bool {
 func createFortiOSClient(fClient *FortiClient, c *Config) error {
 	config := &tls.Config{}
 
-	auth := auth.NewAuth(c.Hostname, c.Token, c.CABundle, c.CABundleContent, c.PeerAuth, c.CaCert, c.ClientCert, c.ClientKey, c.Vdom, c.HTTPProxy)
+	auth := auth.NewAuth(c.Hostname, c.Token, c.CABundle, c.CABundleContent, c.PeerAuth, c.CaCert, c.ClientCert, c.ClientKey, c.Vdom, c.HTTPProxy, c.HTTPSProxy, c.NOProxy)
 
 	if auth.Hostname == "" {
 		_, err := auth.GetEnvHostname()
@@ -134,6 +137,18 @@ func createFortiOSClient(fClient *FortiClient, c *Config) error {
 		_, err := auth.GetEnvHTTPProxy()
 		if err != nil {
 			return fmt.Errorf("Error reading HTTP proxy")
+		}
+	}
+	if auth.HTTPSProxy == "" {
+		_, err := auth.GetEnvHTTPSProxy()
+		if err != nil {
+			return fmt.Errorf("Error reading HTTPS proxy")
+		}
+	}
+	if auth.NOProxy == "" {
+		_, err := auth.GetEnvNOProxy()
+		if err != nil {
+			return fmt.Errorf("Error reading NO proxy")
 		}
 	}
 
@@ -209,13 +224,46 @@ func createFortiOSClient(fClient *FortiClient, c *Config) error {
 		TLSClientConfig: config,
 	}
 
-	if auth.HTTPProxy != "" {
+	disable_proxy := false
+
+	if auth.NOProxy != "" {
+		var noproxy *url.URL
+		noproxy, err2 := url.Parse(auth.NOProxy)
+		if err2 != nil {
+			fmt.Errorf("%w", err2)
+		}
+		noproxy_slice := strings.Split(noproxy.String(), ",")
+		for index, line := range noproxy_slice {
+			if line == "*" || line == c.Hostname {
+				log.Printf("[LOG] no_proxy match: %w %s ", index, line)
+				disable_proxy = true
+			}
+		}
+	}
+
+	if (auth.HTTPProxy != "" || auth.HTTPSProxy != "") && disable_proxy == false {
+		tr = &http.Transport{
+			Proxy:           http.ProxyFromEnvironment,
+			TLSClientConfig: config,
+		}
+	}
+
+	if auth.HTTPProxy != "" && disable_proxy == false {
 		var httpProxy *url.URL
 		httpProxy, err := url.Parse(auth.HTTPProxy)
 		if err != nil {
-			return fmt.Errorf("Error parsing HTTP proxy: %w", err)
+			return fmt.Errorf("Error parsing HTTP Proxy: %w", err)
 		}
 		tr.Proxy = http.ProxyURL(httpProxy)
+	}
+
+	if auth.HTTPSProxy != "" && disable_proxy == false {
+		var httpsProxy *url.URL
+		httpsProxy, err := url.Parse(auth.HTTPSProxy)
+		if err != nil {
+			return fmt.Errorf("Error parsing HTTPS Proxy: %w", err)
+		}
+		tr.Proxy = http.ProxyURL(httpsProxy)
 	}
 
 	client := &http.Client{

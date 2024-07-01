@@ -18,7 +18,7 @@ func dataSourceSystemScripting() *schema.Resource {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"file": &schema.Schema{
+			"script": &schema.Schema{
 				Type:     schema.TypeString,
 				Computed: true,
 			},
@@ -74,7 +74,7 @@ func dataSourceFlattenSystemScriptingMkey(v interface{}, d *schema.ResourceData,
 	return v
 }
 
-func dataSourceFlattenSystemScriptingFile(v interface{}, d *schema.ResourceData, pre string) interface{} {
+func dataSourceFlattenSystemScriptingScript(v interface{}, d *schema.ResourceData, pre string) interface{} {
 	return v
 }
 
@@ -87,9 +87,9 @@ func dataSourceRefreshObjectSystemScripting(d *schema.ResourceData, o map[string
 		}
 	}
 
-	if err = d.Set("file", dataSourceFlattenSystemScriptingFile(o["file"], d, "file")); err != nil {
-		if !fortiAPIPatch(o["file"]) {
-			return fmt.Errorf("Error reading file: %v", err)
+	if err = d.Set("script", dataSourceFlattenSystemScriptingScript(o["script"], d, "script")); err != nil {
+		if !fortiAPIPatch(o["script"]) {
+			return fmt.Errorf("Error reading script: %v", err)
 		}
 	}
 

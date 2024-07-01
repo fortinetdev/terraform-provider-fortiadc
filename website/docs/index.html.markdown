@@ -128,4 +128,4 @@ Check out the FortiADC provider release notes and additional information from: [
 
 ## Versioning
 
-The provider can cover FortiADC 7.4 versions, the configuration of all parameters should be based on the relevant FortiADC version manual.
+The provider can cover FortiADC 7.6 versions, the configuration of all parameters should be based on the relevant FortiADC version manual.

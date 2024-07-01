@@ -15,6 +15,8 @@ type Auth struct {
 	Insecure        *bool
 	Refresh         bool
 	HTTPProxy       string
+	HTTPSProxy      string
+	NOProxy         string
 
 	PeerAuth   string
 	CaCert     string
@@ -23,7 +25,7 @@ type Auth struct {
 }
 
 // NewAuth inits Auth object with the given metadata
-func NewAuth(hostname, token, cabundle, cabundlecontent, peerauth, cacert, clientcert, clientkey, vdom, httpproxy string) *Auth {
+func NewAuth(hostname, token, cabundle, cabundlecontent, peerauth, cacert, clientcert, clientkey, vdom, httpproxy string, httpsproxy string, noproxy string) *Auth {
 	return &Auth{
 		Hostname:        hostname,
 		Token:           token,
@@ -31,6 +33,8 @@ func NewAuth(hostname, token, cabundle, cabundlecontent, peerauth, cacert, clien
 		CABundleContent: cabundlecontent,
 		Vdom:            vdom,
 		HTTPProxy:       httpproxy,
+		HTTPSProxy:      httpsproxy,
+		NOProxy:         noproxy,
 
 		PeerAuth:   peerauth,
 		CaCert:     cacert,
@@ -93,7 +97,7 @@ func (m *Auth) GetEnvInsecure() (bool, error) {
 	return false, nil
 }
 
-//////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////
 // GetEnvPeerAuth gets PeerAuth from OS environment
 // It returns the PeerAuth value
 func (m *Auth) GetEnvPeerAuth() (string, error) {
@@ -153,15 +157,46 @@ func (m *Auth) GetEnvClientKey() (string, error) {
 // GetEnvHTTPProxy gets HTTP_PROXY or HTTPS_PROXY from OS environment
 // It returns the HTTP_PROXY or HTTPS_PROXY
 func (m *Auth) GetEnvHTTPProxy() (string, error) {
+	c := os.Getenv("HTTP_PROXY")
+
+	if c == "" {
+		c = os.Getenv("http_proxy")
+		if c == "" {
+			return c, nil
+		}
+	}
+
+	m.HTTPProxy = c
+
+	return c, nil
+}
+
+func (m *Auth) GetEnvHTTPSProxy() (string, error) {
 	c := os.Getenv("HTTPS_PROXY")
 
 	if c == "" {
-		c = os.Getenv("HTTP_PROXY")
+		c = os.Getenv("https_proxy")
+		if c == "" {
+			return c, nil
+		}
 	}
 
-	if c != "" {
-		m.HTTPProxy = c
+	m.HTTPSProxy = c
+
+	return c, nil
+}
+
+func (m *Auth) GetEnvNOProxy() (string, error) {
+	c := os.Getenv("NO_PROXY")
+
+	if c == "" {
+		c = os.Getenv("no_proxy")
+		if c == "" {
+			return c, nil
+		}
 	}
+
+	m.NOProxy = c
 
 	return c, nil
 }

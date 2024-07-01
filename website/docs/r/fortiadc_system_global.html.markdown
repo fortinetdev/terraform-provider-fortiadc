@@ -42,7 +42,9 @@ The following arguments are supported:
 * `gui_system` - Enable/disable menu system on Web GUI. Valid values: enable/disable.
 * `http_port` - the port number of the http service. (1,65535)
 * `use_default_hostname` - use-default-hostname enable/disable. Valid values: enable/disable.
-* `gui_device_longtitude` - longitude between (-180, 180). 
+* `gui_device_longtitude` - longitude between (-180, 180).
+* `ip_second` - Secondary DNS.
+* `ip_primary` - Primary DNS. 
 
 ## Attribute Reference
 

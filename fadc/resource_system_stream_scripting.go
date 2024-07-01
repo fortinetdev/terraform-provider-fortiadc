@@ -28,7 +28,7 @@ func resourceSystemStreamScripting() *schema.Resource {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"file": &schema.Schema{
+			"script": &schema.Schema{
 				Type:     schema.TypeString,
 				Computed: true,
 				Optional: true,
@@ -159,7 +159,7 @@ func flattenSystemStreamScriptingMkey(v interface{}, d *schema.ResourceData, pre
 	return v
 }
 
-func flattenSystemStreamScriptingFile(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+func flattenSystemStreamScriptingScript(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
 	return v
 }
 
@@ -172,9 +172,9 @@ func refreshObjectSystemStreamScripting(d *schema.ResourceData, o map[string]int
 		}
 	}
 
-	if err = d.Set("file", flattenSystemStreamScriptingFile(o["file"], d, "file", sv)); err != nil {
-		if !fortiAPIPatch(o["file"]) {
-			return fmt.Errorf("Error reading file: %v", err)
+	if err = d.Set("script", flattenSystemStreamScriptingScript(o["script"], d, "script", sv)); err != nil {
+		if !fortiAPIPatch(o["script"]) {
+			return fmt.Errorf("Error reading script: %v", err)
 		}
 	}
 
@@ -185,7 +185,7 @@ func expandSystemStreamScriptingMkey(d *schema.ResourceData, v interface{}, pre 
 	return v, nil
 }
 
-func expandSystemStreamScriptingFile(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+func expandSystemStreamScriptingScript(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
 	return v, nil
 }
 
@@ -201,12 +201,12 @@ func getObjectSystemStreamScripting(d *schema.ResourceData, sv string) (*map[str
 		}
 	}
 
-	if v, ok := d.GetOk("file"); ok {
-		t, err := expandSystemStreamScriptingFile(d, v, "file", sv)
+	if v, ok := d.GetOk("script"); ok {
+		t, err := expandSystemStreamScriptingScript(d, v, "script", sv)
 		if err != nil {
 			return &obj, err
 		} else if t != nil {
-			obj["file"] = t
+			obj["script"] = t
 		}
 	}
 

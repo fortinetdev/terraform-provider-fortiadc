@@ -2496,6 +2496,31 @@ func (c *FortiSDKClient) ReadSystemDns(mkey string, vdom string) (mapTmp map[str
 	return
 }
 
+func (c *FortiSDKClient) DeleteSystemDnsVdom(mkey string, vdom string) (err error) {
+	//No unset API for SystemDnsVdom
+	return
+}
+
+func (c *FortiSDKClient) UpdateSystemDnsVdom(params *map[string]interface{}, mkey string, vdom string) (output map[string]interface{}, err error) {
+	HTTPMethod := "PUT"
+	path := "/api/system_dns_vdom"
+	path += "?vdom=" + escapeURLString(vdom)
+	path += "&mkey=-1"
+	output = make(map[string]interface{})
+
+	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
+	return
+}
+
+func (c *FortiSDKClient) ReadSystemDnsVdom(mkey string, vdom string) (mapTmp map[string]interface{}, err error) {
+	HTTPMethod := "GET"
+	path := "/api/system_dns_vdom"
+	path += "?vdom=" + escapeURLString(vdom)
+
+	mapTmp, err = read(c, HTTPMethod, path, false, vdom)
+	return
+}
+
 func (c *FortiSDKClient) CreateLoadBalanceProfileChildClientResponseHeaderInsert(pkey string, params *map[string]interface{}, vdom string) (output map[string]interface{}, err error) {
 	HTTPMethod := "POST"
 	path := "/api/load_balance_profile_child_client_response_header_insert"

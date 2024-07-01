@@ -31,5 +31,5 @@ output output1 {
 The following attributes are exported:
 
 * `mkey` - scripting name.
-* `file` - scripting. 
+* `script` - content of scripting. 
 

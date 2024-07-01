@@ -57,6 +57,20 @@ func Provider() *schema.Provider {
 				Description: "HTTP proxy address",
 			},
 
+			"https_proxy": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Default:     "",
+				Description: "HTTPS proxy address",
+			},
+
+			"no_proxy": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Default:     "",
+				Description: "NO proxy address",
+			},
+
 			"peerauth": {
 				Type:        schema.TypeString,
 				Optional:    true,
@@ -399,6 +413,7 @@ func Provider() *schema.Provider {
 			"fortiadc_load_balance_ippool":                                             dataSourceLoadBalanceIppool(),
 			"fortiadc_load_balance_ippoollist":                                         dataSourceLoadBalanceIppoolList(),
 			"fortiadc_system_dns":                                                      dataSourceSystemDns(),
+			"fortiadc_system_dns_vdom":                                                 dataSourceSystemDnsVdom(),
 		},
 
 		ResourcesMap: map[string]*schema.Resource{
@@ -547,6 +562,7 @@ func Provider() *schema.Provider {
 			"fortiadc_load_balance_profile_child_client_request_header_insert":     resourceLoadBalanceProfileChildClientRequestHeaderInsert(),
 			"fortiadc_load_balance_ippool":                                         resourceLoadBalanceIppool(),
 			"fortiadc_system_dns":                                                  resourceSystemDns(),
+			"fortiadc_system_dns_vdom":                                             resourceSystemDnsVdom(),
 		},
 
 		ConfigureFunc: providerConfigure,
@@ -563,6 +579,8 @@ func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 		CABundleContent: d.Get("cabundlecontent").(string),
 		Vdom:            d.Get("vdom").(string),
 		HTTPProxy:       d.Get("http_proxy").(string),
+		HTTPSProxy:      d.Get("https_proxy").(string),
+		NOProxy:         d.Get("no_proxy").(string),
 
 		PeerAuth:   d.Get("peerauth").(string),
 		CaCert:     d.Get("cacert").(string),

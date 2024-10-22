@@ -281,3 +281,7 @@ func createFortiOSClient(fClient *FortiClient, c *Config) error {
 
 	return nil
 }
+
+func escapeURLString(v string) string { // doesn't support "<>()"'#"
+	return strings.Replace(url.QueryEscape(v), "+", "%20", -1)
+}

@@ -5060,3 +5060,55 @@ func (c *FortiSDKClient) ReadSystemTimeNtp(mkey string, vdom string) (mapTmp map
 	mapTmp, err = read(c, HTTPMethod, path, false, vdom)
 	return
 }
+
+func (c *FortiSDKClient) StandardCreate(params *map[string]interface{}, vdom string, path string) (output map[string]interface{}, err error) {
+	HTTPMethod := "POST"
+	output = make(map[string]interface{})
+
+	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
+	return
+}
+
+func (c *FortiSDKClient) StandardDelete(mkey string, vdom string, path string) (err error) {
+	HTTPMethod := "DELETE"
+
+	err = delete(c, HTTPMethod, path, vdom)
+	return
+}
+
+func (c *FortiSDKClient) StandardUpdate(params *map[string]interface{}, mkey string, vdom string, path string) (output map[string]interface{}, err error) {
+	HTTPMethod := "PUT"
+	output = make(map[string]interface{})
+
+	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
+	return
+}
+
+func (c *FortiSDKClient) StandardRead(mkey string, vdom string, path string) (mapTmp map[string]interface{}, err error) {
+	HTTPMethod := "GET"
+
+	mapTmp, err = read(c, HTTPMethod, path, false, vdom)
+	return
+}
+
+func (c *FortiSDKClient) DeleteGlobalLoadBalanceSetting(mkey string, vdom string) (err error) {
+	return
+}
+
+func (c *FortiSDKClient) UpdateGlobalLoadBalanceSetting(params *map[string]interface{}, mkey string, vdom string) (output map[string]interface{}, err error) {
+	HTTPMethod := "PUT"
+	path := "/api/global_load_balance_setting?vdom=test&mkey=-1"
+	//path += "?mkey=" + escapeURLString(mkey)
+	output = make(map[string]interface{})
+
+	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
+	return
+}
+
+func (c *FortiSDKClient) ReadGlobalLoadBalanceSetting(mkey string, vdom string) (mapTmp map[string]interface{}, err error) {
+	HTTPMethod := "GET"
+	path := "/api/global_load_balance_setting?vdom=test"
+
+	mapTmp, err = read(c, HTTPMethod, path, false, vdom)
+	return
+}

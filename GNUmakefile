@@ -6,7 +6,7 @@ PKG_NAME=fortiadc
 default: build
 
 build: fmtcheck
-	go install -buildvcs=false
+	CGO_ENABLED=0 go install -buildvcs=false
 
 test: fmtcheck
 	go test -i $(TEST) || exit 1

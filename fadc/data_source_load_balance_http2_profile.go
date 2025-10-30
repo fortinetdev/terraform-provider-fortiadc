@@ -50,6 +50,36 @@ func dataSourceLoadBalanceHttp2Profile() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
+			"backend_http2": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"backend_max_receive_window": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"backend_concurrent_stream": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"backend_proto_mode_https": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"backend_proto_mode_http": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"backend_multiplex_mode": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
 			"vdom": &schema.Schema{
 				Type:     schema.TypeString,
 				Optional: true,
@@ -134,6 +164,30 @@ func dataSourceFlattenLoadBalanceHttp2ProfileMaxHeaderListSize(v interface{}, d 
 	return v
 }
 
+func dataSourceFlattenLoadBalanceHttp2ProfileBackendHttp2(v interface{}, d *schema.ResourceData, pre string) interface{} {
+	return v
+}
+
+func dataSourceFlattenLoadBalanceHttp2ProfileBackendMaxReceiveWindow(v interface{}, d *schema.ResourceData, pre string) interface{} {
+	return v
+}
+
+func dataSourceFlattenLoadBalanceHttp2ProfileBackendConcurrentStream(v interface{}, d *schema.ResourceData, pre string) interface{} {
+	return v
+}
+
+func dataSourceFlattenLoadBalanceHttp2ProfileBackendProtoModeHttps(v interface{}, d *schema.ResourceData, pre string) interface{} {
+	return v
+}
+
+func dataSourceFlattenLoadBalanceHttp2ProfileBackendProtoModeHttp(v interface{}, d *schema.ResourceData, pre string) interface{} {
+	return v
+}
+
+func dataSourceFlattenLoadBalanceHttp2ProfileBackendMultiplexMode(v interface{}, d *schema.ResourceData, pre string) interface{} {
+	return v
+}
+
 func dataSourceRefreshObjectLoadBalanceHttp2Profile(d *schema.ResourceData, o map[string]interface{}) error {
 	var err error
 
@@ -188,6 +242,42 @@ func dataSourceRefreshObjectLoadBalanceHttp2Profile(d *schema.ResourceData, o ma
 	if err = d.Set("max_header_list_size", dataSourceFlattenLoadBalanceHttp2ProfileMaxHeaderListSize(o["max_header_list_size"], d, "max_header_list_size")); err != nil {
 		if !fortiAPIPatch(o["max_header_list_size"]) {
 			return fmt.Errorf("Error reading max_header_list_size: %v", err)
+		}
+	}
+
+	if err = d.Set("backend_http2", dataSourceFlattenLoadBalanceHttp2ProfileBackendHttp2(o["backend_http2"], d, "backend_http2")); err != nil {
+		if !fortiAPIPatch(o["backend_http2"]) {
+			return fmt.Errorf("Error reading backend_http2: %v", err)
+		}
+	}
+
+	if err = d.Set("backend_max_receive_window", dataSourceFlattenLoadBalanceHttp2ProfileBackendMaxReceiveWindow(o["backend_max_receive_window"], d, "backend_max_receive_window")); err != nil {
+		if !fortiAPIPatch(o["backend_max_receive_window"]) {
+			return fmt.Errorf("Error reading backend_max_receive_window: %v", err)
+		}
+	}
+
+	if err = d.Set("backend_concurrent_stream", dataSourceFlattenLoadBalanceHttp2ProfileBackendConcurrentStream(o["backend_concurrent_stream"], d, "backend_concurrent_stream")); err != nil {
+		if !fortiAPIPatch(o["backend_concurrent_stream"]) {
+			return fmt.Errorf("Error reading backend_concurrent_stream: %v", err)
+		}
+	}
+
+	if err = d.Set("backend_proto_mode_https", dataSourceFlattenLoadBalanceHttp2ProfileBackendProtoModeHttps(o["backend_proto_mode_https"], d, "backend_proto_mode_https")); err != nil {
+		if !fortiAPIPatch(o["backend_proto_mode_https"]) {
+			return fmt.Errorf("Error reading backend_proto_mode_https: %v", err)
+		}
+	}
+
+	if err = d.Set("backend_proto_mode_http", dataSourceFlattenLoadBalanceHttp2ProfileBackendProtoModeHttp(o["backend_proto_mode_http"], d, "backend_proto_mode_http")); err != nil {
+		if !fortiAPIPatch(o["backend_proto_mode_http"]) {
+			return fmt.Errorf("Error reading backend_proto_mode_http: %v", err)
+		}
+	}
+
+	if err = d.Set("backend_multiplex_mode", dataSourceFlattenLoadBalanceHttp2ProfileBackendMultiplexMode(o["backend_multiplex_mode"], d, "backend_multiplex_mode")); err != nil {
+		if !fortiAPIPatch(o["backend_multiplex_mode"]) {
+			return fmt.Errorf("Error reading backend_multiplex_mode: %v", err)
 		}
 	}
 

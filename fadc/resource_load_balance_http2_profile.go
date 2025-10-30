@@ -68,6 +68,36 @@ func resourceLoadBalanceHttp2Profile() *schema.Resource {
 				Computed: true,
 				Optional: true,
 			},
+			"backend_http2": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"backend_max_receive_window": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"backend_concurrent_stream": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"backend_proto_mode_https": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"backend_proto_mode_http": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
+			"backend_multiplex_mode": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+				Optional: true,
+			},
 			"vdom": &schema.Schema{
 				Type:     schema.TypeString,
 				Optional: true,
@@ -226,6 +256,30 @@ func flattenLoadBalanceHttp2ProfileMaxHeaderListSize(v interface{}, d *schema.Re
 	return v
 }
 
+func flattenLoadBalanceHttp2ProfileBackendHttp2(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+	return v
+}
+
+func flattenLoadBalanceHttp2ProfileBackendMaxReceiveWindow(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+	return v
+}
+
+func flattenLoadBalanceHttp2ProfileBackendConcurrentStream(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+	return v
+}
+
+func flattenLoadBalanceHttp2ProfileBackendProtoModeHttps(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+	return v
+}
+
+func flattenLoadBalanceHttp2ProfileBackendProtoModeHttp(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+	return v
+}
+
+func flattenLoadBalanceHttp2ProfileBackendMultiplexMode(v interface{}, d *schema.ResourceData, pre string, sv string) interface{} {
+	return v
+}
+
 func refreshObjectLoadBalanceHttp2Profile(d *schema.ResourceData, o map[string]interface{}, sv string) error {
 	var err error
 
@@ -283,6 +337,42 @@ func refreshObjectLoadBalanceHttp2Profile(d *schema.ResourceData, o map[string]i
 		}
 	}
 
+	if err = d.Set("backend_http2", flattenLoadBalanceHttp2ProfileBackendHttp2(o["backend_http2"], d, "backend_http2", sv)); err != nil {
+		if !fortiAPIPatch(o["backend_http2"]) {
+			return fmt.Errorf("Error reading backend_http2: %v", err)
+		}
+	}
+
+	if err = d.Set("backend_max_receive_window", flattenLoadBalanceHttp2ProfileBackendMaxReceiveWindow(o["backend_max_receive_window"], d, "backend_max_receive_window", sv)); err != nil {
+		if !fortiAPIPatch(o["backend_max_receive_window"]) {
+			return fmt.Errorf("Error reading backend_max_receive_window: %v", err)
+		}
+	}
+
+	if err = d.Set("backend_concurrent_stream", flattenLoadBalanceHttp2ProfileBackendConcurrentStream(o["backend_concurrent_stream"], d, "backend_concurrent_stream", sv)); err != nil {
+		if !fortiAPIPatch(o["backend_concurrent_stream"]) {
+			return fmt.Errorf("Error reading backend_concurrent_stream: %v", err)
+		}
+	}
+
+	if err = d.Set("backend_proto_mode_https", flattenLoadBalanceHttp2ProfileBackendProtoModeHttps(o["backend_proto_mode_https"], d, "backend_proto_mode_https", sv)); err != nil {
+		if !fortiAPIPatch(o["backend_proto_mode_https"]) {
+			return fmt.Errorf("Error reading backend_proto_mode_https: %v", err)
+		}
+	}
+
+	if err = d.Set("backend_proto_mode_http", flattenLoadBalanceHttp2ProfileBackendProtoModeHttp(o["backend_proto_mode_http"], d, "backend_proto_mode_http", sv)); err != nil {
+		if !fortiAPIPatch(o["backend_proto_mode_http"]) {
+			return fmt.Errorf("Error reading backend_proto_mode_http: %v", err)
+		}
+	}
+
+	if err = d.Set("backend_multiplex_mode", flattenLoadBalanceHttp2ProfileBackendMultiplexMode(o["backend_multiplex_mode"], d, "backend_multiplex_mode", sv)); err != nil {
+		if !fortiAPIPatch(o["backend_multiplex_mode"]) {
+			return fmt.Errorf("Error reading backend_multiplex_mode: %v", err)
+		}
+	}
+
 	return nil
 }
 
@@ -319,6 +409,30 @@ func expandLoadBalanceHttp2ProfileMkey(d *schema.ResourceData, v interface{}, pr
 }
 
 func expandLoadBalanceHttp2ProfileMaxHeaderListSize(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+	return v, nil
+}
+
+func expandLoadBalanceHttp2ProfileBackendHttp2(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+	return v, nil
+}
+
+func expandLoadBalanceHttp2ProfileBackendMaxReceiveWindow(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+	return v, nil
+}
+
+func expandLoadBalanceHttp2ProfileBackendConcurrentStream(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+	return v, nil
+}
+
+func expandLoadBalanceHttp2ProfileBackendProtoModeHttps(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+	return v, nil
+}
+
+func expandLoadBalanceHttp2ProfileBackendProtoModeHttp(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
+	return v, nil
+}
+
+func expandLoadBalanceHttp2ProfileBackendMultiplexMode(d *schema.ResourceData, v interface{}, pre string, sv string) (interface{}, error) {
 	return v, nil
 }
 
@@ -403,6 +517,60 @@ func getObjectLoadBalanceHttp2Profile(d *schema.ResourceData, sv string) (*map[s
 			return &obj, err
 		} else if t != nil {
 			obj["max_header_list_size"] = t
+		}
+	}
+
+	if v, ok := d.GetOk("backend_http2"); ok {
+		t, err := expandLoadBalanceHttp2ProfileBackendHttp2(d, v, "backend_http2", sv)
+		if err != nil {
+			return &obj, err
+		} else if t != nil {
+			obj["backend_http2"] = t
+		}
+	}
+
+	if v, ok := d.GetOk("backend_max_receive_window"); ok {
+		t, err := expandLoadBalanceHttp2ProfileBackendMaxReceiveWindow(d, v, "backend_max_receive_window", sv)
+		if err != nil {
+			return &obj, err
+		} else if t != nil {
+			obj["backend_max_receive_window"] = t
+		}
+	}
+
+	if v, ok := d.GetOk("backend_concurrent_stream"); ok {
+		t, err := expandLoadBalanceHttp2ProfileBackendConcurrentStream(d, v, "backend_concurrent_stream", sv)
+		if err != nil {
+			return &obj, err
+		} else if t != nil {
+			obj["backend_concurrent_stream"] = t
+		}
+	}
+
+	if v, ok := d.GetOk("backend_proto_mode_https"); ok {
+		t, err := expandLoadBalanceHttp2ProfileBackendProtoModeHttps(d, v, "backend_proto_mode_https", sv)
+		if err != nil {
+			return &obj, err
+		} else if t != nil {
+			obj["backend_proto_mode_https"] = t
+		}
+	}
+
+	if v, ok := d.GetOk("backend_proto_mode_http"); ok {
+		t, err := expandLoadBalanceHttp2ProfileBackendProtoModeHttp(d, v, "backend_proto_mode_http", sv)
+		if err != nil {
+			return &obj, err
+		} else if t != nil {
+			obj["backend_proto_mode_http"] = t
+		}
+	}
+
+	if v, ok := d.GetOk("backend_multiplex_mode"); ok {
+		t, err := expandLoadBalanceHttp2ProfileBackendMultiplexMode(d, v, "backend_multiplex_mode", sv)
+		if err != nil {
+			return &obj, err
+		} else if t != nil {
+			obj["backend_multiplex_mode"] = t
 		}
 	}
 

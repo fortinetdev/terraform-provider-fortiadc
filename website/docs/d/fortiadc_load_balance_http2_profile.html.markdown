@@ -39,4 +39,10 @@ The following attributes are exported:
 * `header_table_size` - size of header table for HPACK. (4096,65536)
 * `upgrade_mode` - Protocol upgrade to HTTP/2 mode. 
 * `max_header_list_size` - Maximum size of header list. (4096,262144)
+* `backend_http2` - Backend HTTP/2 functionality. Valid values: 1:enable, 0:disable .
+* `backend_max_receive_window` - Maximum size of receive window for backend HTTP/2 connection. (16384,524288)
+* `backend_concurrent_stream` - Maximum limit of concurrent stream that the backend server can handle to ensure. (1,200)
+* `backend_proto_mode_https` - HTTPS server backend HTTP/2 protocol mode. Valid values: alpn, force-h1, force-h2.
+* `backend_proto_mode_http` - HTTP server backend HTTP/2 protocol mode. Valid values: force-h1, force-h2.
+* `backend_multiplex_mode` - Backend multiplexing Mode. Valid values: multi-connection, single-connection.
 

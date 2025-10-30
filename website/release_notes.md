@@ -1,6 +1,35 @@
 Release Notes
 ==============================
 
+Release Version 1.3.1
+--------------------
+
+Release Targets
+---------------
+
+FortiADC Terraform 1.3.1
+
+Features
+---------------
+
+- Add new modules:
+
+  - fortiadc_global_load_balance_virtual_server_content_routing_attach
+
+- Updated modules:
+
+  - fortiadc_load_balance_http2_profile
+
+
+- FortiADC version: v7.6 and v8.0
+
+Notice
+---------------
+
+- For detailed configurations of the new modules, please refer to the internal examples within each module.
+
+==============================
+
 Release Version 1.3.0
 --------------------
 

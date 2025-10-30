@@ -3489,6 +3489,25 @@ func (c *FortiSDKClient) ReadLoadBalanceVirtualServer(mkey string, vdom string) 
 	return
 }
 
+func (c *FortiSDKClient) UpdateLoadBalanceVirtualServerContentRoutingAttach(params *map[string]interface{}, mkey string, vdom string) (output map[string]interface{}, err error) {
+	HTTPMethod := "PUT"
+	path := "/api/load_balance_virtual_server"
+	path += "?mkey=" + escapeURLString(mkey)
+	output = make(map[string]interface{})
+
+	err = createUpdate(c, HTTPMethod, path, params, output, vdom)
+	return
+}
+
+func (c *FortiSDKClient) ReadLoadBalanceVirtualServerContentRoutingAttach(mkey string, vdom string) (mapTmp map[string]interface{}, err error) {
+	HTTPMethod := "GET"
+	path := "/api/load_balance_virtual_server"
+	path += "?mkey=" + escapeURLString(mkey)
+
+	mapTmp, err = read(c, HTTPMethod, path, false, vdom)
+	return
+}
+
 func (c *FortiSDKClient) CreateLoadBalanceProfileChildMysqlUserPassword(pkey string, params *map[string]interface{}, vdom string) (output map[string]interface{}, err error) {
 	HTTPMethod := "POST"
 	path := "/api/load_balance_profile_child_mysql_user_password"

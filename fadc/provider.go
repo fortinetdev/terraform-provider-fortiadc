@@ -522,6 +522,7 @@ func Provider() *schema.Provider {
 			"fortiadc_load_balance_content_rewriting":                              resourceLoadBalanceContentRewriting(),
 			"fortiadc_user_adfs_publish":                                           resourceUserAdfsPublish(),
 			"fortiadc_load_balance_virtual_server":                                 resourceLoadBalanceVirtualServer(),
+			"fortiadc_load_balance_virtual_server_content_routing_attach":          resourceLoadBalanceVirtualServerContentRoutingAttach(),
 			"fortiadc_load_balance_profile_child_mysql_user_password":              resourceLoadBalanceProfileChildMysqlUserPassword(),
 			"fortiadc_load_balance_caching":                                        resourceLoadBalanceCaching(),
 			"fortiadc_router_md5_ospf":                                             resourceRouterMd5Ospf(),

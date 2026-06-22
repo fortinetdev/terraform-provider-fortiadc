@@ -66,5 +66,5 @@ In addition to all the above arguments, the following attributes are exported:
 ## Import
  Load Balance Pool Child Pool Member can be imported using any of these accepted formats:
 ```
-$ terraform import fortiadc_load_balance_pool_child_pool_member.labelname {{mkey}}
+$ terraform import fortiadc_load_balance_pool_child_pool_member.labelname {{pkey}}.{{mkey}}
 ```

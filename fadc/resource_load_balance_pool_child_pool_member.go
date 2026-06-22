@@ -5,6 +5,7 @@
 package fortiadc
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"strconv"
@@ -21,7 +22,33 @@ func resourceLoadBalancePoolChildPoolMember() *schema.Resource {
 		Delete: resourceLoadBalancePoolChildPoolMemberDelete,
 
 		Importer: &schema.ResourceImporter{
-			State: schema.ImportStatePassthrough,
+			StateContext: func(ctx context.Context, d *schema.ResourceData, m interface{}) ([]*schema.ResourceData, error) {
+				pkey, mkey, newID, err := parsePkeyMkeyImportID(d.Id())
+				if err != nil {
+					return nil, err
+				}
+
+				c := m.(*FortiClient).Client
+				c.Retries = 1
+
+				o, err := c.ReadLoadBalancePoolChildPoolMember(pkey, mkey, "")
+				if err != nil {
+					return nil, fmt.Errorf("error reading LoadBalancePoolChildPoolMember resource: %v", err)
+				}
+
+				if o == nil {
+					return nil, fmt.Errorf("resource (%s) not found", d.Id())
+				}
+
+				err = d.Set("pkey", pkey)
+				if err != nil {
+					return nil, err
+				}
+
+				d.SetId(newID)
+
+				return []*schema.ResourceData{d}, nil
+			},
 		},
 
 		Schema: map[string]*schema.Schema{
